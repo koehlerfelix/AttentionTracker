@@ -19,6 +19,8 @@ def gaze_data_callback(gaze_data):
         gaze_left_eye = gaze_data['left_gaze_point_on_display_area'],
         gaze_right_eye = gaze_data['right_gaze_point_on_display_area']))
 
-my_eyetracker.subscribe_to(tr.EYETRACKER_GAZE_DATA, gaze_data_callback, as_dictionary=True)
-time.sleep(7)
-my_eyetracker.unsubscribe_from(tr.EYETRACKER_GAZE_DATA, gaze_data_callback)
+def start_collecting():
+    my_eyetracker.subscribe_to(tr.EYETRACKER_GAZE_DATA, gaze_data_callback, as_dictionary=True)
+
+def stop_collecting():
+    my_eyetracker.unsubscribe_from(tr.EYETRACKER_GAZE_DATA, gaze_data_callback)
