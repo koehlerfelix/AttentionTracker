@@ -2,11 +2,11 @@ from tkinter import *
 
 window = Tk()
 
-windowX = 1200
-windowY = 700
+windowX = 1500
+windowY = 750
 
 window.title("Attention Assistnace")
-window.geometry("%dx%d" % (windowX, windowY))
+window.geometry("%dx%d+0+0" % (windowX, windowY))
 
 def openNewWindow():
     lbl.configure(text = "Warum klickst du auf Fertig?? Du bist doch noch nicht fertig!!! :(")
@@ -22,8 +22,6 @@ btnFin.place(x=windowX - 50, y=windowY - 30)
 btnStart = Button(window, text="Start")
 
 btnStart.place(x=10, y=windowY - 30)
-
-
 
 
 
