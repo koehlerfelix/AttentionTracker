@@ -5,13 +5,13 @@ found_eyetrackers = tr.find_all_eyetrackers()
 
 if len(found_eyetrackers) == 0:
     print("No eyetrackers connected")
-    exit()
-
-my_eyetracker = found_eyetrackers[0]
-print("Address: " + my_eyetracker.address)
-print("Model: " + my_eyetracker.model)
-print("Name (It's OK if this is empty): " + my_eyetracker.device_name)
-print("Serial number: " + my_eyetracker.serial_number)
+    #exit()
+else:
+    my_eyetracker = found_eyetrackers[0]
+    print("Address: " + my_eyetracker.address)
+    print("Model: " + my_eyetracker.model)
+    print("Name (It's OK if this is empty): " + my_eyetracker.device_name)
+    print("Serial number: " + my_eyetracker.serial_number)
 
 def gaze_data_callback(gaze_data):
     #Print gaze points of left and right eye
@@ -24,3 +24,4 @@ def start_collecting():
 
 def stop_collecting():
     my_eyetracker.unsubscribe_from(tr.EYETRACKER_GAZE_DATA, gaze_data_callback)
+
