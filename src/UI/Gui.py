@@ -1,13 +1,14 @@
 from tkinter import *
 
 import threading
-import src.eyetracker.connection as c
 import tobii_research as tr
 import src.eyetracker.eyetracker as et
 
 class GUI:
     global connected
     connected = False
+    global eyetracker
+    eyetracker = 0
 
     def run(self):
 
@@ -53,14 +54,16 @@ class GUI:
     def finish_Collecting(self, thread):
         if connected:
             thread.join(1)
-            c.stop_collecting()
+            global eyetracker
+            eyetracker.stop_collecting()
             print("Alles fertig!")
 
 
     def thread_work(self):
         if connected:
             while (1):
-                c.start_collecting()
+                global eyetracker
+                eyetracker.start_collecting()
 
 
     def connect(self):
