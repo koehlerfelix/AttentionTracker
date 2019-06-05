@@ -1,14 +1,20 @@
 from tkinter import *
 
 import threading
+import time
 import tobii_research as tr
 import src.eyetracker.eyetracker as et
 
 class GUI:
-    global connected
-    connected = False
-    global eyetracker
-    eyetracker = 0
+
+    def __init__(self):
+        self.__connected = False
+        self.__eyetracker = et.Eyetracker(0)
+        self.__thread = threading.Thread(target=self.thread_work)
+    #global connected
+    #connected = False
+    #global eyetracker
+    #eyetracker = 0
 
     def run(self):
 
@@ -21,17 +27,17 @@ class GUI:
         window.state('zoomed')
         window.geometry("%dx%d+0+0" % (windowX, windowY))
 
-        thread = threading.Thread(target=self.thread_work)
+        #thread = threading.Thread(target=self.thread_work)
 
         lbl = Label(window, text="Text", font=("Arial Bold", 10))
 
         lbl.pack(side=TOP)
 
-        btnFin = Button(window, text="Fertig", command=self.finish_Collecting(thread))
+        btnFin = Button(window, text="Fertig", command=self.finish_Collecting)
 
         btnFin.place(x=windowX - 50, y=windowY - 30)
 
-        btnStart = Button(window, text="Start", command=self.start_Collecting(thread))
+        btnStart = Button(window, text="Start", command=self.start_Collecting)
 
         btnStart.place(x=10, y=windowY - 30)
 
@@ -46,24 +52,25 @@ class GUI:
         lbl.configure(text="Warum klickst du auf Fertig?? Du bist doch noch nicht fertig!!! :(")
 
 
-    def start_Collecting(self, thread):
-        if connected:
-            thread.start()
+    def start_Collecting(self):
+        print("start")
+        if self.__connected == True :
+            print("ok")
+            self.__thread.start()
 
 
-    def finish_Collecting(self, thread):
-        if connected:
-            thread.join(1)
+    def finish_Collecting(self):
+        if self.__connected == True:
+            self.__thread.join(1)
             global eyetracker
             eyetracker.stop_collecting()
             print("Alles fertig!")
 
 
     def thread_work(self):
-        if connected:
+        if self.__connected == True:
             while (1):
-                global eyetracker
-                eyetracker.start_collecting()
+                self.__eyetracker.start_collecting()
 
 
     def connect(self):
@@ -78,10 +85,13 @@ class GUI:
             print("Model: " + my_eyetracker.model)
             print("Name (It's OK if this is empty): " + my_eyetracker.device_name)
             print("Serial number: " + my_eyetracker.serial_number)
-            global eyetracker
-            eyetracker = et.Eyetracker(my_eyetracker)
-            global connected
-            connected = True
+            print("Connection successful")
+            self.__eyetracker = et.Eyetracker(my_eyetracker)
+            self.__connected = True
+
+    def isConnected(self):
+        return self.__connected
+
 
 
 

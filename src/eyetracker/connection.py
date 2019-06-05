@@ -13,6 +13,7 @@ else:
     print("Name (It's OK if this is empty): " + my_eyetracker.device_name)
     print("Serial number: " + my_eyetracker.serial_number)
 
+
 def gaze_data_callback(gaze_data):
     #Print gaze points of left and right eye
     print("Left eye: ({gaze_left_eye}) \t Right eye: ({gaze_right_eye})".format(
@@ -25,3 +26,6 @@ def start_collecting():
 def stop_collecting():
     my_eyetracker.unsubscribe_from(tr.EYETRACKER_GAZE_DATA, gaze_data_callback)
 
+start_collecting()
+time.sleep(5)
+stop_collecting()
