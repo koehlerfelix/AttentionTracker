@@ -6,10 +6,10 @@ import tobii_research as tr
 import src.eyetracker.eyetracker as et
 
 class GUI:
+    global connected
+    connected = False
 
     def run(self):
-
-        connected = False
 
         window = Tk()
 
