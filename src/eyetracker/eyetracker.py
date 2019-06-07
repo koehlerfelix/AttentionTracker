@@ -17,3 +17,4 @@ class Eyetracker:
 
     def stop_collecting(self):
         self.__tobii_tracker.unsubscribe_from(tr.EYETRACKER_GAZE_DATA, gaze_data_callback)
+        print("stopped")

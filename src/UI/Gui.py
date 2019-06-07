@@ -58,27 +58,25 @@ class GUI:
 
 
     def start_Collecting(self):
-        print("start")
         if self.__connected == True :
-            print("ok")
             self.__thread.start()
 
 
     def finish_Collecting(self):
         if self.__connected == True:
             self.__thread.join(1)
-            global eyetracker
-            eyetracker.stop_collecting()
-            print("Alles fertig!")
+            self.__eyetracker.stop_collecting()
 
 
     def thread_work(self):
         if self.__connected == True:
-            while (1):
-                self.__eyetracker.start_collecting()
+            self.__eyetracker.start_collecting()
 
 
     def connect(self):
+        if self.isConnected():
+            return
+
         found_eyetrackers = tr.find_all_eyetrackers()
 
         if len(found_eyetrackers) == 0:
