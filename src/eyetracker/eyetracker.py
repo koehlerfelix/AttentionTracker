@@ -7,7 +7,8 @@ def gaze_data_callback(gaze_data):
         gaze_left_eye=gaze_data['left_gaze_point_on_display_area'],
         gaze_right_eye=gaze_data['right_gaze_point_on_display_area']))
 
-class Eyetracker:
+
+class EyeTracker:
 
     def __init__(self,tobii_tracker):
         self.__tobii_tracker = tobii_tracker
@@ -17,4 +18,3 @@ class Eyetracker:
 
     def stop_collecting(self):
         self.__tobii_tracker.unsubscribe_from(tr.EYETRACKER_GAZE_DATA, gaze_data_callback)
-        print("stopped")
