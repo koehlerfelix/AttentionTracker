@@ -8,8 +8,13 @@ import src.eyetracker.eyetracker as et
 class GUI:
 
     def __init__(self):
-        self.__connected = False
-        self.__eyetracker = et.Eyetracker(0)
+        trackers = tr.find_all_eyetrackers()
+        if len(trackers) > 0:
+            self.__eyetracker = et.Eyetracker(trackers[0])
+            self.__connected = True
+        else:
+            self.__connected = False
+        #self.__eyetracker = et.Eyetracker(0)
         self.__thread = threading.Thread(target=self.thread_work)
     #global connected
     #connected = False
