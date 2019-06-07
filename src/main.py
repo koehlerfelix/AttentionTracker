@@ -1,7 +1,7 @@
 import src.UI.Gui as g
 
-class Main:
 
+class Main:
 
     if __name__ == "__main__":
         gui = g.GUI()
