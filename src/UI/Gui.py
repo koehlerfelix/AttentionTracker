@@ -30,8 +30,15 @@ class GUI:
         frame = Frame(window, relief=RAISED, borderwidth=1)
         frame.pack(fill=BOTH, expand=True)
 
-        lbl = Label(frame, text="Text", font=("Arial Bold", 20), bg='black', fg='white', width=80, height=20)
-        lbl.pack(expand='True', padx=5, pady=5)
+        # taking image from the directory and storing the source in a variable
+        icon = PhotoImage(file="images/Beispiel.png")
+        icon = icon.subsample(2,2)
+
+        # displaying the picture using a 'Label' by passing the 'picture' variriable to 'image' parameter
+        label = Label(frame, image=icon, width=1300, height=750).pack(expand='True')
+
+        #lbl = Label(frame, text="Text", font=("Arial Bold", 20), bg='black', fg='white', width=80, height=20)
+        #lbl.pack(expand='True', padx=5, pady=5)
 
         btn_stop = Button(text="Stop", command=self.stop_collecting).pack(side="right", padx=10, pady=5)
         btn_start = Button(text="Start", command=self.start_collecting).pack(side="left", padx=10, pady=5)
