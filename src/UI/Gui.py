@@ -44,12 +44,12 @@ class GUI:
         #lbl = Label(frame, text="Text", font=("Arial Bold", 20), bg='black', fg='white', width=80, height=20)
         #lbl.plack(expand='True', padx=5, pady=5)
 
-        btn_stop = Button(text="Stop", command=self.stop_collecting).pack(side="right", padx=10, pady=5)
+        btn_stop = Button(text="Stop", command=self.stop_collecting).pack(side="left", padx=10, pady=5)
         btn_start = Button(text="Start", command=self.start_collecting).pack(side="left", padx=10, pady=5)
-        btn_connect = Button(text="Connect", command=self.connect).pack(side="bottom", padx=10, pady=5)
+        btn_connect = Button(text="Connect", command=self.connect).pack(side="left", padx=10, pady=5)
 
-        btn_next = Button(text="next Page", command=lambda: self.next_page(label, page2)).pack()
-        btn_previous = Button(text="previous Page", command=lambda: self.next_page(frame, label, page1)).pack()
+        btn_next = Button(text="next Page", command=lambda: self.next_page(label, page2)).pack(side="left")
+        btn_previous = Button(text="previous Page", command=lambda: self.next_page(label, page1)).pack(side="left")
 
         label.pack(expand='True')
 
