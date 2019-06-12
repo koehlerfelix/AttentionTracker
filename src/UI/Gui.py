@@ -53,6 +53,7 @@ class GUI:
         if self.__connected:
             self.__thread.join(1)
             self.__eye_tracker.stop_collecting()
+            print(et.get_gaze_data())
 
     def thread_work(self):
         if self.__connected:
