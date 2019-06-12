@@ -2,7 +2,7 @@ from tkinter import *
 
 import threading
 import tobii_research as tr
-import src.eyetracker.eyetracker as et
+import src.eyetracker.eyetracker as eyetracker
 
 
 class GUI:
@@ -10,7 +10,7 @@ class GUI:
     def __init__(self):
         trackers = tr.find_all_eyetrackers()
         if len(trackers) > 0:
-            self.__eye_tracker = et.EyeTracker(trackers[0])
+            self.__eye_tracker = eyetracker.EyeTracker(trackers[0])
             self.__connected = True
         else:
             self.__connected = False
@@ -53,6 +53,7 @@ class GUI:
         if self.__connected:
             self.__thread.join(1)
             self.__eye_tracker.stop_collecting()
+            print(eyetracker.get_gaze_data())
 
     def thread_work(self):
         if self.__connected:
@@ -74,7 +75,7 @@ class GUI:
             print("Name (It's OK if this is empty): " + my_eye_tracker.device_name)
             print("Serial number: " + my_eye_tracker.serial_number)
             print("Connection successful")
-            self.__eye_tracker = et.EyeTracker(my_eye_tracker)
+            self.__eye_tracker = eyetracker.EyeTracker(my_eye_tracker)
             self.__connected = True
 
     def is_connected(self):
