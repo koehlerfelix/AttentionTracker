@@ -31,11 +31,14 @@ class GUI:
         frame.pack(fill=BOTH, expand=True)
 
         # taking image from the directory and storing the source in a variable
-        icon = PhotoImage(file="images/Beispiel.png")
-        icon = icon.subsample(2,2)
+        page = PhotoImage(file="images/Beispiel.png")
+        page = page.subsample(2,2)
+
+        page2 = PhotoImage(file="images/Beispiel2.png")
+        page2 = page2.subsample(2, 2)
 
         # displaying the picture using a 'Label' by passing the 'picture' variriable to 'image' parameter
-        label = Label(frame, image=icon, width=1300, height=750).pack(expand='True')
+        label = Label(frame, image=page, width=1300, height=750).pack(expand='True')
 
         #lbl = Label(frame, text="Text", font=("Arial Bold", 20), bg='black', fg='white', width=80, height=20)
         #lbl.pack(expand='True', padx=5, pady=5)
