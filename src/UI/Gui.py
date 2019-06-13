@@ -44,7 +44,7 @@ class GUI:
 
         file_menu = Menu(window)
         menu.add_cascade(label='File', menu=file_menu)
-        file_menu.add_command(label='Import', command=importFile)
+        file_menu.add_command(label='Import', command=self.importFile)
 
         help_menu = Menu(window)
         menu.add_cascade(label='Help', menu=help_menu)
