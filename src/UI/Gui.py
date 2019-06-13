@@ -32,8 +32,7 @@ class GUI:
 
         window.configure(background='#111111')
 
-        frame = Frame(window, borderwidth=1, background='#1E1E1E')
-        frame.pack(fill=BOTH, expand=True)
+
 
         # pdf (image) files
         pages = pdfViewer
@@ -55,6 +54,9 @@ class GUI:
         canvas_height = window_y - 80
 
         canvas = Canvas(window, width=canvas_width, height=canvas_height)
+        canvas.pack()
+        frame = Frame(window, borderwidth=1, background='#1E1E1E')
+        frame.pack(fill=BOTH, expand=True)
 
         # images = pdfCon.convert()
 
@@ -87,7 +89,7 @@ class GUI:
                               command=lambda: self.next_page(label, page1)).pack(side="right", padx=5, pady=5)
 
         #label.pack(expand='True')
-        canvas.pack()
+
 
         window.mainloop()
 
