@@ -28,7 +28,9 @@ class GUI:
         window.state('zoomed')
         window.geometry("%dx%d+0+0" % (window_x, window_y))
 
-        frame = Frame(window, relief=RAISED, borderwidth=1)
+        window.configure(background='#111111')
+
+        frame = Frame(window, borderwidth=1, background='#1E1E1E')
         frame.pack(fill=BOTH, expand=True)
 
         # taking image from the directory and storing the source in a variable
@@ -39,17 +41,18 @@ class GUI:
         page2 = page2.subsample(2, 2)
 
         # displaying the picture using a 'Label' by passing the 'picture' variriable to 'image' parameter
-        label = Label(frame, image=page1, width=1300, height=750)
+        label = Label(frame, image=page1, width=1300, height=750, background='#1E1E1E')
 
         #lbl = Label(frame, text="Text", font=("Arial Bold", 20), bg='black', fg='white', width=80, height=20)
         #lbl.plack(expand='True', padx=5, pady=5)
 
-        btn_stop = Button(text="Stop", command=self.stop_collecting).pack(side="left", padx=10, pady=5)
-        btn_start = Button(text="Start", command=self.start_collecting).pack(side="left", padx=10, pady=5)
-        btn_connect = Button(text="Connect", command=self.connect).pack(side="left", padx=10, pady=5)
+        btn_start = Button(text="Start", width=15, command=self.start_collecting).pack(side="left", padx=5, pady=5)
+        btn_stop = Button(text="Stop", width=15, command=self.stop_collecting).pack(side="left", padx=5, pady=5)
 
-        btn_next = Button(text="next Page", command=lambda: self.next_page(label, page2)).pack(side="left")
-        btn_previous = Button(text="previous Page", command=lambda: self.next_page(label, page1)).pack(side="left")
+        #btn_connect = Button(text="Connect", command=self.connect).pack(side="left", padx=5, pady=5)
+
+        btn_next = Button(text="next Page", width=15, command=lambda: self.next_page(label, page2)).pack(side="right", padx=5, pady=5)
+        btn_previous = Button(text="previous Page", width=15, command=lambda: self.next_page(label, page1)).pack(side="right", padx=5, pady=5)
 
         label.pack(expand='True')
 
@@ -93,5 +96,3 @@ class GUI:
 
     def is_connected(self):
         return self.__connected
-
-
