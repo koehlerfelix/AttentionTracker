@@ -8,7 +8,6 @@ import util.pdfViewer as pdfViewer
 
 
 class GUI:
-
     __page_index = 0
 
     def __init__(self):
@@ -47,24 +46,20 @@ class GUI:
         def importFile():
             file = filedialog.askopenfilename(initialdir='/', title='Select pdf file',
                                               filetypes=[('pdf files', '*.pdf')])
-            read_pdf_thread = threading.Thread(target=read_pdf(file))
+            read_pdf_thread = threading.Thread(target=self.read_pdf(file))
             read_pdf_thread.start()
             # wait for reading process to finish
             read_pdf_thread.join()
             print('thread joined!!')
-            load_page()
+            self.load_page()
 
         file_menu = Menu(window)
         menu.add_cascade(label='File', menu=file_menu)
         file_menu.add_command(label='Import', command=importFile)
 
-        # init help sub menu
-        def showHelp():
-            print('I should help but cannot atm')
-
         help_menu = Menu(window)
         menu.add_cascade(label='Help', menu=help_menu)
-        help_menu.add_command(label='About', command=showHelp)
+        help_menu.add_command(label='About', command=self.showHelp)
 
         # place canvas for pdf viewer
         canvas_width = window_x - 80
@@ -77,10 +72,9 @@ class GUI:
         # img = PhotoImage(file="src/static/img/myPic.png")
         # canvas.create_image(20, 20, anchor=NW, image=img)
 
-
         # taking image from the directory and storing the source in a variable
         page1 = PhotoImage(file="images/Beispiel.png")
-        page1 = page1.subsample(2,2)
+        page1 = page1.subsample(2, 2)
 
         page2 = PhotoImage(file="images/Beispiel2.png")
         page2 = page2.subsample(2, 2)
@@ -88,21 +82,40 @@ class GUI:
         # displaying the picture using a 'Label' by passing the 'picture' variriable to 'image' parameter
         label = Label(frame, image=page1, width=1300, height=750, background='#1E1E1E')
 
-        #lbl = Label(frame, text="Text", font=("Arial Bold", 20), bg='black', fg='white', width=80, height=20)
-        #lbl.plack(expand='True', padx=5, pady=5)
+        # lbl = Label(frame, text="Text", font=("Arial Bold", 20), bg='black', fg='white', width=80, height=20)
+        # lbl.plack(expand='True', padx=5, pady=5)
 
-        btn_start = Button(text="Start", width=15, bg='grey', command=self.start_collecting).pack(side="left", padx=5, pady=5)
-        btn_stop = Button(text="Stop", width=15, bg='grey', command=self.stop_collecting).pack(side="left", padx=5, pady=5)
+        btn_start = Button(text="Start", width=15, bg='grey', command=self.start_collecting).pack(side="left", padx=5,
+                                                                                                  pady=5)
+        btn_stop = Button(text="Stop", width=15, bg='grey', command=self.stop_collecting).pack(side="left", padx=5,
+                                                                                               pady=5)
 
-        #btn_connect = Button(text="Connect", command=self.connect).pack(side="left", padx=5, pady=5)
+        # btn_connect = Button(text="Connect", command=self.connect).pack(side="left", padx=5, pady=5)
 
-        btn_next = Button(text="next Page", width=15, bg='grey', command=lambda: self.next_page(label, page2)).pack(side="right", padx=5, pady=5)
-        btn_previous = Button(text="previous Page", width=15, bg='grey', command=lambda: self.next_page(label, page1)).pack(side="right", padx=5, pady=5)
+        btn_next = Button(text="next Page", width=15, bg='grey', command=lambda: self.next_page(label, page2)).pack(
+            side="right", padx=5, pady=5)
+        btn_previous = Button(text="previous Page", width=15, bg='grey',
+                              command=lambda: self.next_page(label, page1)).pack(side="right", padx=5, pady=5)
 
         label.pack(expand='True')
         canvas.pack()
 
         window.mainloop()
+
+    # init file sub menu
+    def importFile(self):
+        file = filedialog.askopenfilename(initialdir='/', title='Select pdf file',
+                                          filetypes=[('pdf files', '*.pdf')])
+        read_pdf_thread = threading.Thread(target=self.read_pdf(file))
+        read_pdf_thread.start()
+        # wait for reading process to finish
+        read_pdf_thread.join()
+        print('thread joined!!')
+        self.load_page()
+
+    # init help sub menu
+    def showHelp(self):
+        print('I should help but cannot atm')
 
     def next_page(self, label, page):
         label.config(image=page)
