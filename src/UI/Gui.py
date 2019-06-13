@@ -42,17 +42,6 @@ class GUI:
         menu = Menu(window)
         window.config(menu=menu)
 
-        # init file sub menu
-        def importFile():
-            file = filedialog.askopenfilename(initialdir='/', title='Select pdf file',
-                                              filetypes=[('pdf files', '*.pdf')])
-            read_pdf_thread = threading.Thread(target=self.read_pdf(file))
-            read_pdf_thread.start()
-            # wait for reading process to finish
-            read_pdf_thread.join()
-            print('thread joined!!')
-            self.load_page()
-
         file_menu = Menu(window)
         menu.add_cascade(label='File', menu=file_menu)
         file_menu.add_command(label='Import', command=importFile)
@@ -97,7 +86,7 @@ class GUI:
         btn_previous = Button(text="previous Page", width=15, bg='grey',
                               command=lambda: self.next_page(label, page1)).pack(side="right", padx=5, pady=5)
 
-        label.pack(expand='True')
+        #label.pack(expand='True')
         canvas.pack()
 
         window.mainloop()
