@@ -1,8 +1,10 @@
-from tkinter import *
-
-import threading
 import tobii_research as tr
 import src.eyetracker.eyetracker as eyetracker
+from tkinter import *
+from tkinter import filedialog
+import threading
+import util.pdfConverter as pdfCon
+import util.pdfViewer as pdfViewer
 
 
 class GUI:
@@ -34,6 +36,44 @@ class GUI:
         frame = Frame(window, borderwidth=1, background='#1E1E1E')
         frame.pack(fill=BOTH, expand=True)
 
+        # pdf (image) files
+        pages = pdfViewer
+
+        # init top menu
+        menu = Menu(window)
+        window.config(menu=menu)
+
+        # init file sub menu
+        def importFile():
+            file = filedialog.askopenfilename(initialdir='/', title='Select pdf file',
+                                              filetypes=[('pdf files', '*.pdf')])
+            read_pdf_thread = threading.Thread(target=read_pdf(file))
+            read_pdf_thread.start()
+            # wait for reading process to finish
+            read_pdf_thread.join()
+            print('thread joined!!')
+            load_page()
+
+        file_menu = Menu(window)
+        menu.add_cascade(label='File', menu=file_menu)
+        file_menu.add_command(label='Import', command=importFile)
+
+        # init help sub menu
+        def showHelp():
+            print('I should help but cannot atm')
+
+        help_menu = Menu(window)
+        menu.add_cascade(label='Help', menu=help_menu)
+        help_menu.add_command(label='About', command=showHelp)
+
+        # place canvas for pdf viewer
+        canvas_width = window_x - 80
+        canvas_height = window_y - 80
+
+        canvas = Canvas(window, width=canvas_width, height=canvas_height)
+
+
+
         # taking image from the directory and storing the source in a variable
         page1 = PhotoImage(file="images/Beispiel.png")
         page1 = page1.subsample(2,2)
@@ -56,6 +96,7 @@ class GUI:
         btn_previous = Button(text="previous Page", width=15, bg='grey', command=lambda: self.next_page(label, page1)).pack(side="right", padx=5, pady=5)
 
         label.pack(expand='True')
+        canvas.pack()
 
         window.mainloop()
 
