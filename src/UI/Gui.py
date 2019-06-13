@@ -50,11 +50,11 @@ class GUI:
         help_menu.add_command(label='About', command=self.showHelp)
 
         # place canvas for pdf viewer
-        canvas_width = window_x - 80
-        canvas_height = window_y - 80
+        #canvas_width = window_x - 80
+        #canvas_height = window_y - 80
 
-        canvas = Canvas(window, width=canvas_width, height=canvas_height)
-        canvas.pack()
+        #canvas = Canvas(window, width=canvas_width, height=canvas_height)
+        #canvas.pack()
         frame = Frame(window, borderwidth=1, background='#1E1E1E')
         frame.pack(fill=BOTH, expand=True)
 
@@ -71,7 +71,7 @@ class GUI:
         page2 = page2.subsample(2, 2)
 
         # displaying the picture using a 'Label' by passing the 'picture' variriable to 'image' parameter
-        label = Label(frame, image=page1, width=1300, height=750, background='#1E1E1E')
+        label = Label(frame, image=page1, width=1300, height=700, background='#1E1E1E')
 
         # lbl = Label(frame, text="Text", font=("Arial Bold", 20), bg='black', fg='white', width=80, height=20)
         # lbl.plack(expand='True', padx=5, pady=5)
@@ -88,7 +88,7 @@ class GUI:
         btn_previous = Button(text="previous Page", width=15, bg='grey',
                               command=lambda: self.next_page(label, page1)).pack(side="right", padx=5, pady=5)
 
-        #label.pack(expand='True')
+        label.pack(expand='True')
 
 
         window.mainloop()
