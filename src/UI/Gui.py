@@ -154,13 +154,13 @@ class GUI:
             self.__connected = True
 
     def read_pdf(self, file):
-        pages.set_pages(pdfCon.convert(file))
+        pdfViewer.set_pages(pdfCon.convert(file))
 
     def load_page(self, page=0):
-        if page > len(pdf.get_all_pages):
+        if page > len(pdfViewer.get_all_pages):
             return
-        print('images: ', images)
-        print('first img: ', images[0])
+        print('images: ', pdfViewer.get_all_pages)
+        print('first img: ', pdfViewer.get_all_pages)
         img = PhotoImage(file="src/static/img/myPic.png")
         self.canvas.create_image(20, 20, anchor=NW, image=img)
 
