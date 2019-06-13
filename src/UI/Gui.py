@@ -162,7 +162,7 @@ class GUI:
         print('images: ', images)
         print('first img: ', images[0])
         img = PhotoImage(file="src/static/img/myPic.png")
-        canvas.create_image(20, 20, anchor=NW, image=img)
+        self.canvas.create_image(20, 20, anchor=NW, image=img)
 
     def is_connected(self):
         return self.__connected
