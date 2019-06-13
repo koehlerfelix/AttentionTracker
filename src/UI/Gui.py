@@ -7,6 +7,7 @@ import src.eyetracker.eyetracker as eyetracker
 
 class GUI:
 
+    __page_index = 0
 
     def __init__(self):
         trackers = tr.find_all_eyetrackers()
@@ -46,13 +47,13 @@ class GUI:
         #lbl = Label(frame, text="Text", font=("Arial Bold", 20), bg='black', fg='white', width=80, height=20)
         #lbl.plack(expand='True', padx=5, pady=5)
 
-        btn_start = Button(text="Start", width=15, command=self.start_collecting).pack(side="left", padx=5, pady=5)
-        btn_stop = Button(text="Stop", width=15, command=self.stop_collecting).pack(side="left", padx=5, pady=5)
+        btn_start = Button(text="Start", width=15, bg='grey', command=self.start_collecting).pack(side="left", padx=5, pady=5)
+        btn_stop = Button(text="Stop", width=15, bg='grey', command=self.stop_collecting).pack(side="left", padx=5, pady=5)
 
         #btn_connect = Button(text="Connect", command=self.connect).pack(side="left", padx=5, pady=5)
 
-        btn_next = Button(text="next Page", width=15, command=lambda: self.next_page(label, page2)).pack(side="right", padx=5, pady=5)
-        btn_previous = Button(text="previous Page", width=15, command=lambda: self.next_page(label, page1)).pack(side="right", padx=5, pady=5)
+        btn_next = Button(text="next Page", width=15, bg='grey', command=lambda: self.next_page(label, page2)).pack(side="right", padx=5, pady=5)
+        btn_previous = Button(text="previous Page", width=15, bg='grey', command=lambda: self.next_page(label, page1)).pack(side="right", padx=5, pady=5)
 
         label.pack(expand='True')
 
@@ -96,3 +97,15 @@ class GUI:
 
     def is_connected(self):
         return self.__connected
+
+    def get_page_index(self):
+        return self.__page_index
+
+    def set_page_index(self, newIndex):
+        self.__page_index == newIndex
+
+    def increment_page_index(self):
+        self.__page_index == self.get_page_index + 1
+
+    def decrement_page_index(self):
+        self.__page_index == self.get_page_index - 1
