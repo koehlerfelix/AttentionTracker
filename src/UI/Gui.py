@@ -9,7 +9,7 @@ from PIL import ImageTk
 
 class GUI:
     __pdfViewer = pdfV.PdfViewer()
-    __page_cache = {}  # provide 'fast render' in case page has been rendered before
+    __page_cache = dict()  # provide 'fast render' in case page has been rendered before
 
     def __init__(self):
         trackers = tr.find_all_eyetrackers()
@@ -162,6 +162,8 @@ class GUI:
             value.configure(state=NORMAL)
 
     def read_pdf(self, file):
+        if bool(self.__page_cache):
+            self.__page_cache = dict()
         self.__pdfViewer.init_file(file)
 
     def render_page(self, page_index=0):
