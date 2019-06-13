@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1023bc04-ed5e-4415-b49e-d95e2f54eb99" name="Default Changelist" comment="test msg">
-      <change beforePath="$PROJECT_DIR$/src/UI/Gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +27,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/util/pdfConverter.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+                <state relative-caret-position="408">
+                  <caret line="24" selection-start-line="24" selection-end-line="24" />
                   <folding>
                     <element signature="e#0#9#0" expanded="true" />
                   </folding>
@@ -48,19 +49,23 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/UI/Gui.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="165" column="35" selection-start-line="165" selection-start-column="35" selection-end-line="165" selection-end-column="35" />
+                <state relative-caret-position="759">
+                  <caret line="203" selection-start-line="203" selection-end-line="203" />
                   <folding>
                     <element signature="e#0#27#0" expanded="true" />
-                    <element signature="e#3909#3946#0" />
-                    <element signature="e#4006#4060#0" />
-                    <element signature="e#4101#4250#0" />
-                    <element signature="e#4287#4357#0" />
-                    <element signature="e#4390#5073#0" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/.gitignore">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="51">
+                  <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
                 </state>
               </provider>
             </entry>
@@ -96,6 +101,7 @@
         <option value="$PROJECT_DIR$/src/util/pdfViewer.py" />
         <option value="$PROJECT_DIR$/src/util/pdfConverter.py" />
         <option value="$PROJECT_DIR$/src/UI/Gui.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -110,6 +116,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -175,7 +182,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -229,23 +235,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1560418646711</updated>
-      <workItem from="1560418652420" duration="27963000" />
+      <workItem from="1560418652420" duration="28986000" />
+      <workItem from="1560456606507" duration="118000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27973000" />
+    <option name="totallyTimeSpent" value="29114000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14552239" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14712153" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.15709643" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.20693392" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -278,15 +285,15 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/img/erstesLatexDokument/c66272c9-023d-4dc9-b7c9-230872d792ed-1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/img/erstesLatexDokument/c66272c9-023d-4dc9-b7c9-230872d792ed-1.jpg">
-      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/util/pdfViewer.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -297,8 +304,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/util/pdfConverter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="25" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+        <state relative-caret-position="408">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -307,16 +314,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/Gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="165" column="35" selection-start-line="165" selection-start-column="35" selection-end-line="165" selection-end-column="35" />
+        <state relative-caret-position="759">
+          <caret line="203" selection-start-line="203" selection-end-line="203" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
-            <element signature="e#3909#3946#0" />
-            <element signature="e#4006#4060#0" />
-            <element signature="e#4101#4250#0" />
-            <element signature="e#4287#4357#0" />
-            <element signature="e#4390#5073#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
         </state>
       </provider>
     </entry>
