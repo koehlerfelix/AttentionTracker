@@ -1,14 +1,15 @@
 import tobii_research as tr
-import src.eyetracker.eyetracker as eyetracker
+import eyetracker.eyetracker as eyetracker
 from tkinter import *
 from tkinter import filedialog
 import threading
-import util.pdfConverter as pdfCon
-import util.pdfViewer as pdfViewer
+import util.pdfViewer as pdfV
+from PIL import ImageTk
 
 
 class GUI:
-    __page_index = 0
+    __pdfViewer = pdfV.PdfViewer()
+    __page_cache = {}  # provide 'fast render' in case page has been rendered before
 
     def __init__(self):
         trackers = tr.find_all_eyetrackers()
@@ -19,97 +20,99 @@ class GUI:
             self.__connected = False
         self.__thread = threading.Thread(target=self.thread_work)
 
+        # set window reference
+        self.__window = Tk()
+
+        # set label reference
+        self.__label = Label()
+
+        # set interaction items reference
+        self.__pdf_nav_items = dict()
+        self.__eye_tracker_con_items = dict()
+
+        # set page counter
+        self.__page_counter = StringVar()
+        self.__page_counter.set('1 / 1')
+
     def run(self):
 
-        window = Tk()
+        window_x = self.__window.winfo_screenwidth()
+        window_y = self.__window.winfo_screenheight()
 
-        window_x = 1500
-        window_y = 750
+        self.__window.title('Attention Assistance')
+        self.__window.state('zoomed')
+        self.__window.geometry("%dx%d+0+0" % (window_x, window_y))
 
-        window.title("Attention Assistance")
-        window.state('zoomed')
-        window.geometry("%dx%d+0+0" % (window_x, window_y))
-
-        window.configure(background='#111111')
-
-
-
-        # pdf (image) files
-        pages = pdfViewer
+        self.__window.configure(background='#111111')
 
         # init top menu
-        menu = Menu(window)
-        window.config(menu=menu)
+        menu = Menu(self.__window)
+        self.__window.config(menu=menu)
 
-        file_menu = Menu(window)
+        file_menu = Menu(self.__window)
         menu.add_cascade(label='File', menu=file_menu)
-        file_menu.add_command(label='Import', command=self.importFile)
+        file_menu.add_command(label='Import', command=self.import_file)
 
-        help_menu = Menu(window)
+        help_menu = Menu(self.__window)
         menu.add_cascade(label='Help', menu=help_menu)
-        help_menu.add_command(label='About', command=self.showHelp)
+        help_menu.add_command(label='About', command=self.show_help)
 
-        # place canvas for pdf viewer
-        #canvas_width = window_x - 80
-        #canvas_height = window_y - 80
-
-        #canvas = Canvas(window, width=canvas_width, height=canvas_height)
-        #canvas.pack()
-        frame = Frame(window, borderwidth=1, background='#1E1E1E')
+        frame = Frame(self.__window, borderwidth=1, background='#1E1E1E')
         frame.pack(fill=BOTH, expand=True)
 
-        # images = pdfCon.convert()
-
-        # img = PhotoImage(file="src/static/img/myPic.png")
-        # canvas.create_image(20, 20, anchor=NW, image=img)
-
-        # taking image from the directory and storing the source in a variable
-        page1 = PhotoImage(file="images/Beispiel.png")
-        page1 = page1.subsample(2, 2)
-
-        page2 = PhotoImage(file="images/Beispiel2.png")
-        page2 = page2.subsample(2, 2)
-
-        # displaying the picture using a 'Label' by passing the 'picture' variriable to 'image' parameter
-        label = Label(frame, image=page1, width=1300, height=700, background='#1E1E1E')
+        # set starting page
+        starting_page = PhotoImage(file="static/img/default.png")
+        starting_page = starting_page.subsample(2, 2)
+        self.__label = Label(frame, image=starting_page,
+                             width=window_x - 200,
+                             height=window_y - 200,
+                             background='#1E1E1E')
 
         # lbl = Label(frame, text="Text", font=("Arial Bold", 20), bg='black', fg='white', width=80, height=20)
         # lbl.plack(expand='True', padx=5, pady=5)
 
-        btn_start = Button(text="Start", width=15, bg='grey', command=self.start_collecting).pack(side="left", padx=5,
-                                                                                                  pady=5)
-        btn_stop = Button(text="Stop", width=15, bg='grey', command=self.stop_collecting).pack(side="left", padx=5,
-                                                                                               pady=5)
+        # init eye-tracking buttons
+        btn_start = Button(text="Start", width=15, bg='grey', command=self.start_collecting)
+        self.__eye_tracker_con_items['btn_start'] = btn_start
+        btn_start.pack(side="left", padx=5, pady=5)
+
+        btn_stop = Button(text="Stop", width=15, bg='grey', command=self.stop_collecting)
+        self.__eye_tracker_con_items['btn_stop'] = btn_stop
+        btn_stop.pack(side="left", padx=5, pady=5)
 
         # btn_connect = Button(text="Connect", command=self.connect).pack(side="left", padx=5, pady=5)
 
-        btn_next = Button(text="next Page", width=15, bg='grey', command=lambda: self.next_page(label, page2)).pack(
-            side="right", padx=5, pady=5)
-        btn_previous = Button(text="previous Page", width=15, bg='grey',
-                              command=lambda: self.next_page(label, page1)).pack(side="right", padx=5, pady=5)
+        # init pdf navigation buttons
+        btn_next = Button(text="Next", width=15, bg='grey', state=DISABLED,
+                          command=lambda: self.next_page())
+        self.__pdf_nav_items['btn_next'] = btn_next
+        btn_next.pack(side="right", padx=5, pady=5)
 
-        label.pack(expand='True')
+        btn_prev = Button(text="Previous", width=15, bg='grey', state=DISABLED,
+                          command=lambda: self.prev_page())
+        self.__pdf_nav_items['btn_prev'] = btn_prev
+        btn_prev.pack(side="right", padx=5, pady=5)
 
+        # init page counter
+        my_label = Label(frame, textvariable=self.__page_counter, fg='#f2f2f2', bg='#1E1E1E',
+                         font='Verdana 10 bold', justify=CENTER)\
+            .pack(side=BOTTOM)
 
-        window.mainloop()
+        self.__label.pack(expand='True')
 
-    # init file sub menu
-    def importFile(self):
-        file = filedialog.askopenfilename(initialdir='/', title='Select pdf file',
-                                          filetypes=[('pdf files', '*.pdf')])
-        read_pdf_thread = threading.Thread(target=self.read_pdf(file))
-        read_pdf_thread.start()
-        # wait for reading process to finish
-        read_pdf_thread.join()
-        print('thread joined!!')
-        self.load_page()
+        self.__window.mainloop()
 
     # init help sub menu
-    def showHelp(self):
+    def show_help(self):
         print('I should help but cannot atm')
 
-    def next_page(self, label, page):
-        label.config(image=page)
+    # view next page
+    def next_page(self):
+        self.render_page(self.__pdfViewer.get_next_page_index())
+
+    # view previous page
+    def prev_page(self):
+        self.render_page(self.__pdfViewer.get_previous_page_index())
 
     def start_collecting(self):
         if self.__connected:
@@ -144,28 +147,55 @@ class GUI:
             self.__eye_tracker = eyetracker.EyeTracker(my_eye_tracker)
             self.__connected = True
 
-    def read_pdf(self, file):
-        pdfViewer.set_pages(pdfCon.convert(file))
+    def import_file(self):
+        file = filedialog.askopenfilename(initialdir='/', title='Select pdf file',
+                                          filetypes=[('pdf files', '*.pdf')])
+        read_pdf_thread = threading.Thread(target=self.read_pdf(file))
+        read_pdf_thread.start()
 
-    def load_page(self, page=0):
-        if page > len(pdfViewer.get_all_pages):
-            return
-        print('images: ', pdfViewer.get_all_pages)
-        print('first img: ', pdfViewer.get_all_pages)
-        img = PhotoImage(file="src/static/img/myPic.png")
-        self.canvas.create_image(20, 20, anchor=NW, image=img)
+        # wait for reading process to finish
+        read_pdf_thread.join()
+        self.render_page()
+
+        # activate nav buttons
+        for key, value in self.__pdf_nav_items.items():
+            value.configure(state=NORMAL)
+
+    def read_pdf(self, file):
+        self.__pdfViewer.init_file(file)
+
+    def render_page(self, page_index=0):
+        if page_index in self.__page_cache:
+            loaded_page = self.__page_cache[page_index]
+
+        else:
+            loaded_page = self.__pdfViewer.get_page(page_index)
+
+            # compute resize dimensions
+            l_dim = {'width': self.__label.winfo_width(), 'height': self.__label.winfo_height()}
+            resize = 1  # resize factor
+            if loaded_page.size[0] > l_dim['width']:  # page width > label width
+                resize = l_dim['width']/loaded_page.size[0]
+
+            if loaded_page.size[1]*resize > l_dim['height']:  # page height * resize factor > label height
+                resize = l_dim['height']/loaded_page.size[1]
+
+            if resize < 1:
+                loaded_page = loaded_page.resize((int(loaded_page.size[0]*resize), int(loaded_page.size[1]*resize)))
+
+            loaded_page = ImageTk.PhotoImage(loaded_page)
+            # save loaded page in cache
+            self.__page_cache[page_index] = loaded_page
+
+        # put new page into label
+        self.__label.configure(image=loaded_page)
+        self.__label.image = loaded_page
+
+        # set current page state
+        self.__pdfViewer.set_page_index(page_index)
+
+        # update page counter
+        self.__page_counter.set(' '.join([str(page_index + 1), '/', str(self.__pdfViewer.num_of_pages())]))
 
     def is_connected(self):
         return self.__connected
-
-    def get_page_index(self):
-        return self.__page_index
-
-    def set_page_index(self, newIndex):
-        self.__page_index == newIndex
-
-    def increment_page_index(self):
-        self.__page_index == self.get_page_index + 1
-
-    def decrement_page_index(self):
-        self.__page_index == self.get_page_index - 1
