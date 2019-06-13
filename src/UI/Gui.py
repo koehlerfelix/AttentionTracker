@@ -72,6 +72,10 @@ class GUI:
 
         canvas = Canvas(window, width=canvas_width, height=canvas_height)
 
+        # images = pdfCon.convert()
+
+        # img = PhotoImage(file="src/static/img/myPic.png")
+        # canvas.create_image(20, 20, anchor=NW, image=img)
 
 
         # taking image from the directory and storing the source in a variable
@@ -135,6 +139,17 @@ class GUI:
             print("Connection successful")
             self.__eye_tracker = eyetracker.EyeTracker(my_eye_tracker)
             self.__connected = True
+
+    def read_pdf(self, file):
+        pages.set_pages(pdfCon.convert(file))
+
+    def load_page(self, page=0):
+        if page > len(pdf.get_all_pages):
+            return
+        print('images: ', images)
+        print('first img: ', images[0])
+        img = PhotoImage(file="src/static/img/myPic.png")
+        canvas.create_image(20, 20, anchor=NW, image=img)
 
     def is_connected(self):
         return self.__connected
