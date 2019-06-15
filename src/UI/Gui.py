@@ -74,11 +74,11 @@ class GUI:
         # lbl.plack(expand='True', padx=5, pady=5)
 
         # init eye-tracking buttons
-        btn_start = Button(text="Start", width=15, bg='grey', command=self.start_collecting)
+        btn_start = Button(text="Start", width=15, bg='grey', command=lambda: self.start_collecting(btn_stop))
         self.__eye_tracker_con_items['btn_start'] = btn_start
         btn_start.pack(side="left", padx=5, pady=5)
 
-        btn_stop = Button(text="Stop", width=15, bg='grey', command=self.stop_collecting)
+        btn_stop = Button(text="Stop", width=15, bg='grey', state="disabled", command=self.stop_collecting)
         self.__eye_tracker_con_items['btn_stop'] = btn_stop
         btn_stop.pack(side="left", padx=5, pady=5)
 
@@ -97,7 +97,7 @@ class GUI:
 
         # init page counter
         my_label = Label(frame, textvariable=self.__page_counter, fg='#f2f2f2', bg='#1E1E1E',
-                         font='Verdana 10 bold', justify=CENTER)\
+                         font='Verdana 10 bold', justify=CENTER) \
             .pack(side=BOTTOM)
 
         self.__label.pack(expand='True')
@@ -116,7 +116,8 @@ class GUI:
     def prev_page(self):
         self.render_page(self.__pdfViewer.get_previous_page_index())
 
-    def start_collecting(self):
+    def start_collecting(self, btn_stop):
+        btn_stop.configure(state="active")
         if self.__connected:
             self.__thread.start()
 
@@ -128,14 +129,11 @@ class GUI:
 
         # checking gaze data and open new window
         __gaze_data_list = eyetracker.get_gaze_data()
-        #if __gaze_data_list.__sizeof__() > 0:
-        #dashboard = dash.Dashboard(__gaze_data_list)
-        #else:
-            #print("Error no gazedata")
-
-        self.__window.withdraw()
-        self.newWindow = dash.Dashboard(__gaze_data_list)
-
+        if __gaze_data_list.__sizeof__() > 0:
+            self.__window.withdraw()
+            self.newWindow = dash.Dashboard(__gaze_data_list)
+        else:
+            print("Error no gazedata")
 
     def thread_work(self):
         if self.__connected:
@@ -190,13 +188,13 @@ class GUI:
             l_dim = {'width': self.__label.winfo_width(), 'height': self.__label.winfo_height()}
             resize = 1  # resize factor
             if loaded_page.size[0] > l_dim['width']:  # page width > label width
-                resize = l_dim['width']/loaded_page.size[0]
+                resize = l_dim['width'] / loaded_page.size[0]
 
-            if loaded_page.size[1]*resize > l_dim['height']:  # page height * resize factor > label height
-                resize = l_dim['height']/loaded_page.size[1]
+            if loaded_page.size[1] * resize > l_dim['height']:  # page height * resize factor > label height
+                resize = l_dim['height'] / loaded_page.size[1]
 
             if resize < 1:
-                loaded_page = loaded_page.resize((int(loaded_page.size[0]*resize), int(loaded_page.size[1]*resize)))
+                loaded_page = loaded_page.resize((int(loaded_page.size[0] * resize), int(loaded_page.size[1] * resize)))
 
             loaded_page = ImageTk.PhotoImage(loaded_page)
             # save loaded page in cache
