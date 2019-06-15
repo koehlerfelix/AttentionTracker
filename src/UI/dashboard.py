@@ -31,7 +31,7 @@ class Dashboard(tk.Toplevel):
         self.btn_finish = Button(self, text="finish", width=15, bg='white', command=self.close_window)
         self.btn_finish.pack(side="right", padx=5, pady=5)
 
-        self.btn_show = Button(self, text="show", width=15, bg='white', command=lambda: self.show_circles(self.__canvas))
+        self.btn_show = Button(self, text="show", width=15, bg='white', command=lambda: self.show_circles(self.__canvas, window_x, window_y))
         self.btn_show.pack(side="top", padx=5, pady=5)
 
         self.__canvas.pack(expand='True')
@@ -40,8 +40,9 @@ class Dashboard(tk.Toplevel):
     def close_window(self):
         self.destroy()
 
-    def show_circles(self, canvas):
-        for i in range(10):
-            canvas.create_text(self.__gaze_data_list[i][0], self.__gaze_data_list[i][1], text="x")
+    def show_circles(self, canvas, window_x, window_y):
+        for i in range(self.__gaze_data_list.__sizeof__()):
+            canvas.create_text(self.__gaze_data_list[i][0]*window_x, self.__gaze_data_list[i][1]*window_y, text="x")
 
         canvas.update
+        print("finished")
