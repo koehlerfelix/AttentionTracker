@@ -20,15 +20,28 @@ class Dashboard(tk.Toplevel):
         frame = Frame(self, borderwidth=1, background='#1E1E1E')
         frame.pack(fill=BOTH, expand=True)
 
-        self.__label = Label(frame, width=window_x - 200, height=window_y - 200, background='white')
+        # drawing circles
+        self.__canvas = Canvas(frame, width=window_x - 150, height=window_y - 200, background='white')
 
-        self.__label.pack(expand='True')
+        self.__label = Label(frame, width=220, height=45, background='white')
+
+
+        #self.__label.pack(expand='True')
 
         self.btn_finish = Button(self, text="finish", width=15, bg='white', command=self.close_window)
-        self.btn_finish.pack(side="top", padx=5, pady=5)
+        self.btn_finish.pack(side="right", padx=5, pady=5)
 
+        self.btn_show = Button(self, text="show", width=15, bg='white', command=lambda: self.show_circles(self.__canvas))
+        self.btn_show.pack(side="top", padx=5, pady=5)
 
+        self.__canvas.pack(expand='True')
 
 
     def close_window(self):
         self.destroy()
+
+    def show_circles(self, canvas):
+        for i in range(10):
+            canvas.create_text(self.__gaze_data_list[i][0], self.__gaze_data_list[i][1], text="x")
+
+        canvas.update
