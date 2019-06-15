@@ -106,7 +106,7 @@ class GUI:
 
     # init help sub menu
     def show_help(self):
-        print('I should help but cannot atm')
+        print('I should help but cannot atm..........send help pls')
 
     # view next page
     def next_page(self):
