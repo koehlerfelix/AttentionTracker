@@ -4,6 +4,7 @@ from tkinter import *
 from tkinter import filedialog
 import threading
 import util.pdfViewer as pdfV
+import src.UI.dashboard as dash
 from PIL import ImageTk
 
 
@@ -13,6 +14,7 @@ class GUI:
 
     def __init__(self):
         trackers = tr.find_all_eyetrackers()
+
         if len(trackers) > 0:
             self.__eye_tracker = eyetracker.EyeTracker(trackers[0])
             self.__connected = True
@@ -123,6 +125,17 @@ class GUI:
             self.__thread.join(1)
             self.__eye_tracker.stop_collecting()
             print(eyetracker.get_gaze_data())
+
+        # checking gaze data and open new window
+        __gaze_data_list = eyetracker.get_gaze_data()
+        #if __gaze_data_list.__sizeof__() > 0:
+        #dashboard = dash.Dashboard(__gaze_data_list)
+        #else:
+            #print("Error no gazedata")
+
+        self.__window.withdraw()
+        self.newWindow = dash.Dashboard(__gaze_data_list)
+
 
     def thread_work(self):
         if self.__connected:
