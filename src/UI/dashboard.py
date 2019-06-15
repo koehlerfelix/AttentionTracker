@@ -22,7 +22,7 @@ class Dashboard(tk.Toplevel):
         frame.pack(fill=BOTH, expand=True)
 
         # drawing circles
-        self.__canvas = Canvas(frame, width=window_x - 150, height=window_y - 200, background='white')
+        self.__canvas = Canvas(frame, width=window_x - 30, height=window_y - 130, background='white')
 
         self.__label = Label(frame, width=220, height=45, background='white')
 

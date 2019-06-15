@@ -74,7 +74,7 @@ class GUI:
         # lbl.plack(expand='True', padx=5, pady=5)
 
         # init eye-tracking buttons
-        btn_start = Button(text="Start", width=15, bg='grey', command=lambda: self.start_collecting(btn_stop))
+        btn_start = Button(text="Start", width=15, bg='grey', command=lambda: self.start_collecting(btn_stop, btn_start))
         self.__eye_tracker_con_items['btn_start'] = btn_start
         btn_start.pack(side="left", padx=5, pady=5)
 
@@ -116,8 +116,9 @@ class GUI:
     def prev_page(self):
         self.render_page(self.__pdfViewer.get_previous_page_index())
 
-    def start_collecting(self, btn_stop):
-        btn_stop.configure(state="active")
+    def start_collecting(self, btn_stop, btn_start):
+        btn_stop.configure(state="normal")
+        btn_start.configure(state="disabled")
         if self.__connected:
             self.__thread.start()
 
