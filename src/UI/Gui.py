@@ -130,7 +130,7 @@ class GUI:
 
         # checking gaze data and open new window
         __gaze_data_list = eyetracker.get_gaze_data()
-        if __gaze_data_list.__sizeof__() > 0:
+        if len(__gaze_data_list) > 0:
             self.__window.withdraw()
             self.newWindow = dash.Dashboard(__gaze_data_list)
         else:
