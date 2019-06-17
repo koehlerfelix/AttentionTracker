@@ -132,7 +132,7 @@ class GUI:
         __gaze_data_list = eyetracker.get_gaze_data()
         if len(__gaze_data_list) > 0:
             self.__window.withdraw()
-            self.newWindow = dash.Dashboard(__gaze_data_list)
+            self.newWindow = dash.Dashboard(__gaze_data_list, self.__page_cache)
         else:
             print("No gazedata but u get some")
             __gaze_data_list_alternative = [(0.17616580426692963, 0.9616665244102478),
