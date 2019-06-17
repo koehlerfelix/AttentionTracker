@@ -57,9 +57,9 @@ class Dashboard(tk.Toplevel):
             x = self.__gaze_data_list[i][0] * window_x
             y = self.__gaze_data_list[i][1] * window_y
 
-            if (x < self.canvas_rootx) or (x > self.canvas_rootx + self.canvas_width) or (y < self.canvas_rooty) or (y > self.canvas_rooty + self.canvas_height):
-                continue
-            else:
-                canvas.create_text(x, y, text="x")
+            #if (x < self.canvas_rootx) or (x > self.canvas_rootx + self.canvas_width) or (y < self.canvas_rooty) or (y > self.canvas_rooty + self.canvas_height):
+            #    continue
+            #else:
+            canvas.create_text(x, y, text="x")
 
         print("finished printing")

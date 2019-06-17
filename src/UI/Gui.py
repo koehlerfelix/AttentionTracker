@@ -317,7 +317,7 @@ class GUI:
                                             (0.04916686564683914, 0.11403277516365051),
                                             (0.04455307871103287, 0.11317751556634903)]
             self.__window.withdraw()
-            self.newWindow = dash.Dashboard(__gaze_data_list_alternative)
+            self.newWindow = dash.Dashboard(__gaze_data_list_alternative, self.__page_cache)
 
 
     def thread_work(self):
