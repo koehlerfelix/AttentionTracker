@@ -24,13 +24,14 @@ class Dashboard(tk.Toplevel):
         frame.pack(fill=BOTH, expand=True)
 
         # making canvas
-        canvas = Canvas(frame, width=window_x - 130, height=window_y - 230, background='white')
+        print('page cache', page_cache[0])
+        canvas = Canvas(frame, width=window_x - 360, height=window_y - 230, background='white')
         canvas.pack(expand='True')
 
         # loding image into canvas !!!!not working!!!! and i have no clue why
         img = PhotoImage(file="images/Beispiel.png")
         img = img.subsample(2)
-        canvas.create_image(0, 0, anchor=NW, image=img)
+        canvas.create_image(0, 0, anchor=NW, image=page_cache[0])
 
         # get dimensions of canvas
         self.canvas_rootx = canvas.winfo_rootx()
