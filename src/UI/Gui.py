@@ -11,6 +11,7 @@ from PIL import ImageTk
 class GUI:
     __pdfViewer = pdfV.PdfViewer()
     __page_cache = dict()  # provide 'fast render' in case page has been rendered before
+    gaze_data_lists = [[[]]]
 
     def __init__(self):
         trackers = tr.find_all_eyetrackers()
@@ -20,6 +21,7 @@ class GUI:
             self.__connected = True
         else:
             self.__connected = False
+
         self.__thread = threading.Thread(target=self.thread_work)
 
         # set window reference
@@ -110,11 +112,15 @@ class GUI:
 
     # view next page
     def next_page(self):
-        self.render_page(self.__pdfViewer.get_next_page_index())
+        next_page_index = self.__pdfViewer.get_next_page_index()
+
+        self.render_page(next_page_index)
 
     # view previous page
     def prev_page(self):
-        self.render_page(self.__pdfViewer.get_previous_page_index())
+        prev_page_index = self.__pdfViewer.get_previous_page_index()
+
+        self.render_page(prev_page_index)
 
     def start_collecting(self, btn_stop, btn_start):
         btn_stop.configure(state="normal")
@@ -319,6 +325,8 @@ class GUI:
             self.__window.withdraw()
             self.newWindow = dash.Dashboard(__gaze_data_list_alternative)
 
+    def reset_thread(self, thread):
+        thread = threading.Thread(target=self.thread_work)
 
     def thread_work(self):
         if self.__connected:
