@@ -11,7 +11,7 @@ from PIL import ImageTk
 class GUI:
     __pdfViewer = pdfV.PdfViewer()
     __page_cache = dict()  # provide 'fast render' in case page has been rendered before
-    gaze_data_lists = [[[]]]
+    __gaze_data_lists = [[[]]]
 
     def __init__(self):
         trackers = tr.find_all_eyetrackers()
@@ -114,25 +114,41 @@ class GUI:
     def next_page(self):
         next_page_index = self.__pdfViewer.get_next_page_index()
 
+        # reset thread and save gaze data from page
+        self.reset_and_save_gaze_data(next_page_index - 1)
+
+        # restart thread
+        self.__thread.start()
+
         self.render_page(next_page_index)
 
     # view previous page
     def prev_page(self):
         prev_page_index = self.__pdfViewer.get_previous_page_index()
 
+        # reset thread and save gaze data from page
+        self.reset_and_save_gaze_data(prev_page_index + 1)
+
+        # restart thread
+        self.__thread.start()
+
         self.render_page(prev_page_index)
 
     def start_collecting(self, btn_stop, btn_start):
         btn_stop.configure(state="normal")
         btn_start.configure(state="disabled")
+
+        # setting the gaze array
+        for x in range(0, len(self.__pdfViewer.get_all_pages())):
+            self.__gaze_data_lists.append([[]])
+
         if self.__connected:
             self.__thread.start()
 
     def stop_collecting(self):
         if self.__connected:
-            self.__thread.join(1)
-            self.__eye_tracker.stop_collecting()
-            print(eyetracker.get_gaze_data())
+            self.reset_and_save_gaze_data(self.__pdfViewer.get_next_page_index() - 1)
+            print('stop collecting')
 
         # checking gaze data and open new window
         __gaze_data_list = eyetracker.get_gaze_data()
@@ -325,8 +341,16 @@ class GUI:
             self.__window.withdraw()
             self.newWindow = dash.Dashboard(__gaze_data_list_alternative)
 
-    def reset_thread(self, thread):
-        thread = threading.Thread(target=self.thread_work)
+    def reset_and_save_gaze_data(self, page_index):
+        self.__thread.join(1)
+        self.__thread = threading.Thread(target=self.thread_work)
+        self.__eye_tracker.stop_collecting()
+
+        self.__gaze_data_lists[page_index].append(eyetracker.get_gaze_data())
+
+        print('Gaze Data on Page ', page_index + 1, ': ', self.__gaze_data_lists[page_index])
+
+
 
     def thread_work(self):
         if self.__connected:
