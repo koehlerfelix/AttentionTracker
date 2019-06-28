@@ -47,7 +47,9 @@ class Dashboard(tk.Toplevel):
         img = PhotoImage(file="images/Beispiel.png")
         self.__canvas.create_image(0, 0, anchor=NW, image=img)
 
-        for i in range(len(self.__gaze_data_list)):
-            self.__canvas.create_text(self.__gaze_data_list[i][0] * window_x, self.__gaze_data_list[i][1] * window_y,
+        print(self.__gaze_data_list[0])
+
+        for i in range(len(self.__gaze_data_list[0])):
+            self.__canvas.create_text(self.__gaze_data_list[0][i][0] * window_x, self.__gaze_data_list[0][i][1] * window_y,
                                       text="x")
         print("finished printing")

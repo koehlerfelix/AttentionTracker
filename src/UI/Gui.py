@@ -151,13 +151,12 @@ class GUI:
             print('stop collecting')
 
         # checking gaze data and open new window
-        __gaze_data_list = eyetracker.get_gaze_data()
-        if len(__gaze_data_list) > 0:
+        if (self.__gaze_data_lists) != [[[]]]:
             self.__window.withdraw()
-            self.newWindow = dash.Dashboard(__gaze_data_list)
+            self.newWindow = dash.Dashboard(self.__gaze_data_lists)
         else:
             print("No gazedata but u get some")
-            __gaze_data_list_alternative = [(0.17616580426692963, 0.9616665244102478),
+            __gaze_data_lists_alternative = [[(0.17616580426692963, 0.9616665244102478),
                                             (0.17312994599342346, 0.9625645279884338),
                                             (0.17123974859714508, 0.9627096056938171),
                                             (0.1604757159948349, 0.97650545835495),
@@ -337,9 +336,9 @@ class GUI:
                                             (0.07640410214662552, 0.35195282101631165),
                                             (0.06472419202327728, 0.2508367896080017),
                                             (0.04916686564683914, 0.11403277516365051),
-                                            (0.04455307871103287, 0.11317751556634903)]
+                                            (0.04455307871103287, 0.11317751556634903)], []]
             self.__window.withdraw()
-            self.newWindow = dash.Dashboard(__gaze_data_list_alternative)
+            self.newWindow = dash.Dashboard(__gaze_data_lists_alternative)
 
     def reset_and_save_gaze_data(self, page_index):
         self.__thread.join(1)
