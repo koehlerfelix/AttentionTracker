@@ -140,7 +140,7 @@ class GUI:
 
         # setting the gaze array
         for x in range(0, len(self.__pdfViewer.get_all_pages())):
-            self.__gaze_data_lists.append([[]])
+            self.__gaze_data_lists.append([])
 
         if self.__connected:
             self.__thread.start()
