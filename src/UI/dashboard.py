@@ -4,6 +4,8 @@ from tkinter import *
 
 class Dashboard(tk.Toplevel):
 
+    # gaze data list hat 2 listen: [0] hat keine "NaN" werte [1] hat welche
+
     def __init__(self, __gaze_data_list):
         self.__gaze_data_list = __gaze_data_list
 
