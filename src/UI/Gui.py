@@ -11,131 +11,8 @@ from PIL import ImageTk
 class GUI:
     __pdfViewer = pdfV.PdfViewer()
     __page_cache = dict()  # provide 'fast render' in case page has been rendered before
-
-    def __init__(self):
-        trackers = tr.find_all_eyetrackers()
-
-        if len(trackers) > 0:
-            self.__eye_tracker = eyetracker.EyeTracker(trackers[0])
-            self.__connected = True
-        else:
-            self.__connected = False
-        self.__thread = threading.Thread(target=self.thread_work)
-
-        # set window reference
-        self.__window = Tk()
-
-        # set label reference
-        self.__label = Label()
-
-        # set interaction items reference
-        self.__pdf_nav_items = dict()
-        self.__eye_tracker_con_items = dict()
-
-        # set page counter
-        self.__page_counter = StringVar()
-        self.__page_counter.set('1 / 1')
-
-    def run(self):
-
-        window_x = self.__window.winfo_screenwidth()
-        window_y = self.__window.winfo_screenheight()
-
-        self.__window.title('Attention Assistance')
-        self.__window.state('zoomed')
-        self.__window.geometry("%dx%d+0+0" % (window_x, window_y))
-
-        self.__window.configure(background='#111111')
-
-        # init top menu
-        menu = Menu(self.__window)
-        self.__window.config(menu=menu)
-
-        file_menu = Menu(self.__window)
-        menu.add_cascade(label='File', menu=file_menu)
-        file_menu.add_command(label='Import', command=self.import_file)
-
-        help_menu = Menu(self.__window)
-        menu.add_cascade(label='Help', menu=help_menu)
-        help_menu.add_command(label='About', command=self.show_help)
-
-        frame = Frame(self.__window, borderwidth=1, background='#1E1E1E')
-        frame.pack(fill=BOTH, expand=True)
-
-        # set starting page
-        starting_page = PhotoImage(file="static/img/default.png")
-        starting_page = starting_page.subsample(2, 2)
-        self.__label = Label(frame, image=starting_page,
-                             width=window_x - 200,
-                             height=window_y - 200,
-                             background='#1E1E1E')
-
-        # lbl = Label(frame, text="Text", font=("Arial Bold", 20), bg='black', fg='white', width=80, height=20)
-        # lbl.plack(expand='True', padx=5, pady=5)
-
-        # init eye-tracking buttons
-        btn_start = Button(text="Start", width=15, bg='grey', command=lambda: self.start_collecting(btn_stop, btn_start))
-        self.__eye_tracker_con_items['btn_start'] = btn_start
-        btn_start.pack(side="left", padx=5, pady=5)
-
-        btn_stop = Button(text="Stop", width=15, bg='grey', state="disabled", command=self.stop_collecting)
-        self.__eye_tracker_con_items['btn_stop'] = btn_stop
-        btn_stop.pack(side="left", padx=5, pady=5)
-
-        # btn_connect = Button(text="Connect", command=self.connect).pack(side="left", padx=5, pady=5)
-
-        # init pdf navigation buttons
-        btn_next = Button(text="Next", width=15, bg='grey', state=DISABLED,
-                          command=lambda: self.next_page())
-        self.__pdf_nav_items['btn_next'] = btn_next
-        btn_next.pack(side="right", padx=5, pady=5)
-
-        btn_prev = Button(text="Previous", width=15, bg='grey', state=DISABLED,
-                          command=lambda: self.prev_page())
-        self.__pdf_nav_items['btn_prev'] = btn_prev
-        btn_prev.pack(side="right", padx=5, pady=5)
-
-        # init page counter
-        my_label = Label(frame, textvariable=self.__page_counter, fg='#f2f2f2', bg='#1E1E1E',
-                         font='Verdana 10 bold', justify=CENTER) \
-            .pack(side=BOTTOM)
-
-        self.__label.pack(expand='True')
-
-        self.__window.mainloop()
-
-    # init help sub menu
-    def show_help(self):
-        print('I should help but cannot atm..........send help pls')
-
-    # view next page
-    def next_page(self):
-        self.render_page(self.__pdfViewer.get_next_page_index())
-
-    # view previous page
-    def prev_page(self):
-        self.render_page(self.__pdfViewer.get_previous_page_index())
-
-    def start_collecting(self, btn_stop, btn_start):
-        btn_stop.configure(state="normal")
-        btn_start.configure(state="disabled")
-        if self.__connected:
-            self.__thread.start()
-
-    def stop_collecting(self):
-        if self.__connected:
-            self.__thread.join(1)
-            self.__eye_tracker.stop_collecting()
-            print(eyetracker.get_gaze_data())
-
-        # checking gaze data and open new window
-        __gaze_data_list = eyetracker.get_gaze_data()
-        if len(__gaze_data_list) > 0:
-            self.__window.withdraw()
-            self.newWindow = dash.Dashboard(__gaze_data_list)
-        else:
-            print("No gazedata but u get some")
-            __gaze_data_list_alternative = [(0.17616580426692963, 0.9616665244102478),
+    __gaze_data_lists = [[[]]]
+    __gaze_data_lists_alternative = __gaze_data_lists_alternative = [[(0.17616580426692963, 0.9616665244102478),
                                             (0.17312994599342346, 0.9625645279884338),
                                             (0.17123974859714508, 0.9627096056938171),
                                             (0.1604757159948349, 0.97650545835495),
@@ -315,9 +192,163 @@ class GUI:
                                             (0.07640410214662552, 0.35195282101631165),
                                             (0.06472419202327728, 0.2508367896080017),
                                             (0.04916686564683914, 0.11403277516365051),
-                                            (0.04455307871103287, 0.11317751556634903)]
+                                            (0.04455307871103287, 0.11317751556634903)], []]
+
+    def __init__(self):
+        trackers = tr.find_all_eyetrackers()
+
+        if len(trackers) > 0:
+            self.__eye_tracker = eyetracker.EyeTracker(trackers[0])
+            self.__connected = True
+        else:
+            self.__connected = False
+
+        self.__thread = threading.Thread(target=self.thread_work)
+
+        # set window reference
+        self.__window = Tk()
+
+        # set label reference
+        self.__label = Label()
+
+        # set interaction items reference
+        self.__pdf_nav_items = dict()
+        self.__eye_tracker_con_items = dict()
+
+        # set page counter
+        self.__page_counter = StringVar()
+        self.__page_counter.set('1 / 1')
+
+    def run(self):
+
+        window_x = self.__window.winfo_screenwidth()
+        window_y = self.__window.winfo_screenheight()
+
+        self.__window.title('Attention Assistance')
+        self.__window.state('zoomed')
+        self.__window.geometry("%dx%d+0+0" % (window_x, window_y))
+
+        self.__window.configure(background='#111111')
+
+        # init top menu
+        menu = Menu(self.__window)
+        self.__window.config(menu=menu)
+
+        file_menu = Menu(self.__window)
+        menu.add_cascade(label='File', menu=file_menu)
+        file_menu.add_command(label='Import', command=self.import_file)
+
+        help_menu = Menu(self.__window)
+        menu.add_cascade(label='Help', menu=help_menu)
+        help_menu.add_command(label='About', command=self.show_help)
+
+        frame = Frame(self.__window, borderwidth=1, background='#1E1E1E')
+        frame.pack(fill=BOTH, expand=True)
+
+        # set starting page
+        starting_page = PhotoImage(file="static/img/default.png")
+        starting_page = starting_page.subsample(2, 2)
+        self.__label = Label(frame, image=starting_page,
+                             width=window_x - 200,
+                             height=window_y - 200,
+                             background='#1E1E1E')
+
+        # lbl = Label(frame, text="Text", font=("Arial Bold", 20), bg='black', fg='white', width=80, height=20)
+        # lbl.plack(expand='True', padx=5, pady=5)
+
+        # init eye-tracking buttons
+        btn_start = Button(text="Start", width=15, bg='grey', command=lambda: self.start_collecting(btn_stop, btn_start))
+        self.__eye_tracker_con_items['btn_start'] = btn_start
+        btn_start.pack(side="left", padx=5, pady=5)
+
+        btn_stop = Button(text="Stop", width=15, bg='grey', state="disabled", command=self.stop_collecting)
+        self.__eye_tracker_con_items['btn_stop'] = btn_stop
+        btn_stop.pack(side="left", padx=5, pady=5)
+
+        # btn_connect = Button(text="Connect", command=self.connect).pack(side="left", padx=5, pady=5)
+
+        # init pdf navigation buttons
+        btn_next = Button(text="Next", width=15, bg='grey', state=DISABLED,
+                          command=lambda: self.next_page())
+        self.__pdf_nav_items['btn_next'] = btn_next
+        btn_next.pack(side="right", padx=5, pady=5)
+
+        btn_prev = Button(text="Previous", width=15, bg='grey', state=DISABLED,
+                          command=lambda: self.prev_page())
+        self.__pdf_nav_items['btn_prev'] = btn_prev
+        btn_prev.pack(side="right", padx=5, pady=5)
+
+        # init page counter
+        my_label = Label(frame, textvariable=self.__page_counter, fg='#f2f2f2', bg='#1E1E1E',
+                         font='Verdana 10 bold', justify=CENTER) \
+            .pack(side=BOTTOM)
+
+        self.__label.pack(expand='True')
+
+        self.__window.mainloop()
+
+    # init help sub menu
+    def show_help(self):
+        print('I should help but cannot atm..........send help pls')
+
+    # view next page
+    def next_page(self):
+        next_page_index = self.__pdfViewer.get_next_page_index()
+
+        # reset thread and save gaze data from page
+        self.reset_and_save_gaze_data(next_page_index - 1)
+
+        # restart thread
+        self.__thread.start()
+
+        self.render_page(next_page_index)
+
+    # view previous page
+    def prev_page(self):
+        prev_page_index = self.__pdfViewer.get_previous_page_index()
+
+        # reset thread and save gaze data from page
+        self.reset_and_save_gaze_data(prev_page_index + 1)
+
+        # restart thread
+        self.__thread.start()
+
+        self.render_page(prev_page_index)
+
+    def start_collecting(self, btn_stop, btn_start):
+        btn_stop.configure(state="normal")
+        btn_start.configure(state="disabled")
+
+        # setting the gaze array
+        for x in range(0, len(self.__pdfViewer.get_all_pages())):
+            self.__gaze_data_lists.append([])
+
+        if self.__connected:
+            self.__thread.start()
+
+    def stop_collecting(self):
+        if self.__connected:
+            self.reset_and_save_gaze_data(self.__pdfViewer.get_next_page_index() - 1)
+            print('stop collecting')
+
+        # checking gaze data and open new window
+        if (self.__gaze_data_lists) != [[[]]]:
             self.__window.withdraw()
-            self.newWindow = dash.Dashboard(__gaze_data_list_alternative)
+            self.newWindow = dash.Dashboard(self.__gaze_data_lists)
+        else:
+            print("No gazedata but u get some")
+            self.__window.withdraw()
+            self.newWindow = dash.Dashboard(self.__gaze_data_lists_alternative)
+
+    def reset_and_save_gaze_data(self, page_index):
+        self.__thread.join(1)
+        self.__thread = threading.Thread(target=self.thread_work)
+        self.__eye_tracker.stop_collecting()
+
+        self.__gaze_data_lists[page_index].append(eyetracker.get_gaze_data())
+
+        print('Gaze Data on Page ', page_index + 1, ': ', self.__gaze_data_lists[page_index])
+
 
 
     def thread_work(self):
