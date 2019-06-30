@@ -5,6 +5,7 @@ from tkinter import filedialog
 import threading
 import util.pdfViewer as pdfV
 import src.UI.dashboard as dash
+import time
 from PIL import ImageTk
 
 
@@ -13,6 +14,9 @@ class GUI:
     __page_cache = dict()  # provide 'fast render' in case page has been rendered before
     __gaze_data_lists = [[[]]]
     __pupil_data_lists = [[]]
+
+    __avg_pupil_size = 3.2 #Random Value
+
     __gaze_data_lists_alternative = __gaze_data_lists_alternative = [[(0.17616580426692963, 0.9616665244102478),
                                                                       (0.17312994599342346, 0.9625645279884338),
                                                                       (0.17123974859714508, 0.9627096056938171),
@@ -267,7 +271,10 @@ class GUI:
         self.__eye_tracker_con_items['btn_stop'] = btn_stop
         btn_stop.pack(side="left", padx=5, pady=5)
 
-        # btn_connect = Button(text="Connect", command=self.connect).pack(side="left", padx=5, pady=5)
+        btn_scan_pupil = Button(text="Scan Pupil", width=15, bg='grey',
+                           command=self.scan_pupil_size)
+        self.__eye_tracker_con_items['btn_scan_pupil'] = btn_scan_pupil
+        btn_scan_pupil.pack(side="left", padx=5, pady=5)
 
         # init pdf navigation buttons
         btn_next = Button(text="Next", width=15, bg='grey', state=DISABLED,
@@ -330,6 +337,12 @@ class GUI:
         btn_stop.configure(state="normal")
         btn_start.configure(state="disabled")
 
+        #setting up thread
+        if(self.__thread.isAlive()):
+            self.__thread.join()
+        self.__thread = threading.Thread(target=self.thread_work)
+
+        #start thread
         if self.__connected:
             self.__thread.start()
 
@@ -367,6 +380,17 @@ class GUI:
     def scan_pupil_size(self):
         print("start scan")
 
+        self.__thread.start()
+        time.sleep(5)
+        self.__thread.join(1)
+        self.__eye_tracker.stop_collecting()
+
+        # compute avg size
+        pupil_data = eyetracker.get_pupil_data()
+        self.__avg_pupil_size = sum(pupil_data) / len(pupil_data)
+
+        print("Average Size: ", self.__avg_pupil_size)
+        print(pupil_data)
 
     def thread_work(self):
         if self.__connected:
