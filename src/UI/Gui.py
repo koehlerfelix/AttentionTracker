@@ -12,6 +12,7 @@ class GUI:
     __pdfViewer = pdfV.PdfViewer()
     __page_cache = dict()  # provide 'fast render' in case page has been rendered before
     __gaze_data_lists = [[[]]]
+    __pupil_data_lists = [[]]
     __gaze_data_lists_alternative = __gaze_data_lists_alternative = [[(0.17616580426692963, 0.9616665244102478),
                                             (0.17312994599342346, 0.9625645279884338),
                                             (0.17123974859714508, 0.9627096056938171),
@@ -296,6 +297,7 @@ class GUI:
         next_page_index = self.__pdfViewer.get_next_page_index()
 
         # reset thread and save gaze data from page
+
         self.reset_and_save_gaze_data(next_page_index - 1)
 
         # restart thread
@@ -346,6 +348,7 @@ class GUI:
         self.__eye_tracker.stop_collecting()
 
         self.__gaze_data_lists[page_index].append(eyetracker.get_gaze_data())
+        self.__pupil_data_lists[page_index].append(eyetracker.get_pupil_data())
 
         print('Gaze Data on Page ', page_index + 1, ': ', self.__gaze_data_lists[page_index])
 

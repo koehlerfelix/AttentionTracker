@@ -15,7 +15,7 @@ def gaze_data_callback(gaze_data):
     pupil_data_list.append(gaze_data['right_pupil_diameter'])
 
 
-def get_pupil_data(self):
+def get_pupil_data():
     return pupil_data_list
 
 
@@ -30,7 +30,9 @@ class EyeTracker:
 
     def start_collecting(self):
         global gaze_data_list
+        global pupil_data_list
         gaze_data_list = []
+        pupil_data_list = []
         self.__tobii_tracker.subscribe_to(tr.EYETRACKER_GAZE_DATA, gaze_data_callback, as_dictionary=True)
 
     def stop_collecting(self):
