@@ -370,8 +370,8 @@ class GUI:
 
             # feeding in avg pupil size
             for x in len(self.__pupil_data_lists):
-                self.__pupil_data_lists.append(self.__avg_pupil_size)
-            self.newWindow = dash.Dashboard(self.__gaze_data_lists_alternative, self.__pupil_data_lists)
+                self.__pupil_data_lists[x] = self.__avg_pupil_size
+            self.newWindow = dash.Dashboard(self.__gaze_data_lists_alternative, self.__avg_pupil_size, self.__pupil_data_lists)
 
     def reset_and_save_gaze_data(self, page_index):
         self.__thread.join(1)
@@ -487,7 +487,7 @@ class GUI:
         avg_list = []
 
         # flatten and clean list
-        for x in range(0, len(pupil_list)):
+        for x in range(0, len(pupil_list) - 1):
             flattened_list = list(itertools.chain.from_iterable(pupil_list[x]))
             cleaned_list = self.clean_list(flattened_list)
             if len(cleaned_list) > 0:
