@@ -350,7 +350,7 @@ class GUI:
             print('stop collecting')
 
         # checking gaze data and open new window
-        if (self.__gaze_data_lists) != [[[]]]:
+        if (len(self.__gaze_data_lists[0]) == 0):
             self.__window.withdraw()
             self.newWindow = dash.Dashboard(self.__gaze_data_lists)
         else:
