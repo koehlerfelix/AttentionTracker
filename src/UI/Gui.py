@@ -330,11 +330,6 @@ class GUI:
         btn_stop.configure(state="normal")
         btn_start.configure(state="disabled")
 
-        # setting the gaze array
-        for x in range(0, len(self.__pdfViewer.get_all_pages())):
-            self.__gaze_data_lists.append([])
-            self.__pupil_data_lists.append([])
-
         if self.__connected:
             self.__thread.start()
 
@@ -368,6 +363,10 @@ class GUI:
         self.__pupil_data_lists[page_index].append(eyetracker.get_pupil_data())
 
         print('Gaze Data on Page ', page_index + 1, ': ', self.__gaze_data_lists[page_index])
+
+    def scan_pupil_size(self):
+        print("start scan")
+
 
     def thread_work(self):
         if self.__connected:
@@ -405,6 +404,11 @@ class GUI:
         # activate nav buttons
         for key, value in self.__pdf_nav_items.items():
             value.configure(state=NORMAL)
+
+        # setting the gaze array
+        for x in range(0, len(self.__pdfViewer.get_all_pages())):
+             self.__gaze_data_lists.append([])
+             self.__pupil_data_lists.append([])
 
     def read_pdf(self, file):
         if bool(self.__page_cache):
