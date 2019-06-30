@@ -340,17 +340,18 @@ class GUI:
 
     def stop_collecting(self):
         if self.__connected:
-            # compute current page index
+            print('stop collecting')
+
+            # save the last gaze data
             next_page_index = self.__pdfViewer.get_next_page_index()
             if next_page_index == 0:
                 current_page_index = len(self.__pdfViewer.get_all_pages()) - 1
             else:
                 current_page_index = next_page_index - 1
             self.reset_and_save_gaze_data(current_page_index)
-            print('stop collecting')
 
         # checking gaze data and open new window
-        if (len(self.__gaze_data_lists[0]) == 0):
+        if (len(self.__gaze_data_lists[1]) != 0):
             self.__window.withdraw()
             self.newWindow = dash.Dashboard(self.__gaze_data_lists)
         else:
