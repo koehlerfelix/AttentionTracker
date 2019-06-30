@@ -340,7 +340,13 @@ class GUI:
 
     def stop_collecting(self):
         if self.__connected:
-            self.reset_and_save_gaze_data(self.__pdfViewer.get_next_page_index() - 1)
+            # compute current page index
+            next_page_index = self.__pdfViewer.get_next_page_index()
+            if next_page_index == 0:
+                current_page_index = len(self.__pdfViewer.get_all_pages()) - 1
+            else:
+                current_page_index = next_page_index - 1
+            self.reset_and_save_gaze_data(current_page_index)
             print('stop collecting')
 
         # checking gaze data and open new window
@@ -439,3 +445,10 @@ class GUI:
 
     def is_connected(self):
         return self.__connected
+
+    def compute_avg_pupil_size(self, pupil_list):
+        avg_list = []
+        for x in range(0, len(pupil_list)):
+            avg_list.append(sum(pupil_list[x]))
+
+        return avg_list
