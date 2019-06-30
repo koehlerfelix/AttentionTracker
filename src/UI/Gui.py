@@ -297,8 +297,11 @@ class GUI:
         next_page_index = self.__pdfViewer.get_next_page_index()
 
         # reset thread and save gaze data from page
-
-        self.reset_and_save_gaze_data(next_page_index - 1)
+        if next_page_index == 0:
+            current_page_index = len(self.__pdfViewer.get_all_pages()) - 1
+        else:
+            current_page_index = next_page_index - 1
+        self.reset_and_save_gaze_data(current_page_index)
 
         # restart thread
         self.__thread.start()
@@ -310,7 +313,12 @@ class GUI:
         prev_page_index = self.__pdfViewer.get_previous_page_index()
 
         # reset thread and save gaze data from page
-        self.reset_and_save_gaze_data(prev_page_index + 1)
+        if prev_page_index == (len(self.__pdfViewer.get_all_pages()) - 1):
+            current_page_index = 0
+        else:
+            current_page_index = prev_page_index + 1
+
+        self.reset_and_save_gaze_data(current_page_index)
 
         # restart thread
         self.__thread.start()
@@ -324,6 +332,7 @@ class GUI:
         # setting the gaze array
         for x in range(0, len(self.__pdfViewer.get_all_pages())):
             self.__gaze_data_lists.append([])
+            self.__pupil_data_lists.append([])
 
         if self.__connected:
             self.__thread.start()
