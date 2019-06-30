@@ -1,7 +1,7 @@
 import tobii_research as tr
 
 gaze_data_list = []
-
+pupil_data_list = []
 
 def gaze_data_callback(gaze_data):
     # Print gaze points of left and right eye
@@ -10,6 +10,13 @@ def gaze_data_callback(gaze_data):
     #    gaze_right_eye=gaze_data['right_gaze_point_on_display_area']))
     global gaze_data_list
     gaze_data_list.append(gaze_data['right_gaze_point_on_display_area'])
+
+    global pupil_data_list
+    pupil_data_list.append(gaze_data['right_pupil_diameter'])
+
+
+def get_pupil_data(self):
+    return pupil_data_list
 
 
 def get_gaze_data():
