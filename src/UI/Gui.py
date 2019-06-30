@@ -6,6 +6,7 @@ import threading
 import util.pdfViewer as pdfV
 import src.UI.dashboard as dash
 import time
+import math
 from PIL import ImageTk
 
 
@@ -379,7 +380,7 @@ class GUI:
 
     def scan_pupil_size(self):
         print("start scan")
-
+        self.__thread = threading.Thread(target=self.thread_work)
         self.__thread.start()
         time.sleep(5)
         self.__thread.join(1)
@@ -387,10 +388,12 @@ class GUI:
 
         # compute avg size
         pupil_data = eyetracker.get_pupil_data()
-        self.__avg_pupil_size = sum(pupil_data) / len(pupil_data)
+        cleaned_pupil_data = self.clean_list(pupil_data)
 
-        print("Average Size: ", self.__avg_pupil_size)
-        print(pupil_data)
+        self.__avg_pupil_size = sum(cleaned_pupil_data) / len(cleaned_pupil_data)
+
+        print("Average Size:", self.__avg_pupil_size)
+        print("Pupil_Data:", cleaned_pupil_data)
 
     def thread_work(self):
         if self.__connected:
@@ -481,3 +484,6 @@ class GUI:
             avg_list.append(sum(pupil_list[x]))
 
         return avg_list
+
+    def clean_list(self, list):
+        return [x for x in list if (not(math.isnan(x)))]
