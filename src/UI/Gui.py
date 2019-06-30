@@ -17,7 +17,7 @@ class GUI:
     __gaze_data_lists = [[[]]]
     __pupil_data_lists = [[]]
 
-    __avg_pupil_size = 3.2 #Random Value
+    __avg_pupil_size = 3.2  # Random Value
 
     __gaze_data_lists_alternative = __gaze_data_lists_alternative = [[(0.17616580426692963, 0.9616665244102478),
                                                                       (0.17312994599342346, 0.9625645279884338),
@@ -274,7 +274,7 @@ class GUI:
         btn_stop.pack(side="left", padx=5, pady=5)
 
         btn_scan_pupil = Button(text="Scan Pupil", width=15, bg='grey',
-                           command=self.scan_pupil_size)
+                                command=self.scan_pupil_size)
         self.__eye_tracker_con_items['btn_scan_pupil'] = btn_scan_pupil
         btn_scan_pupil.pack(side="left", padx=5, pady=5)
 
@@ -339,12 +339,12 @@ class GUI:
         btn_stop.configure(state="normal")
         btn_start.configure(state="disabled")
 
-        #setting up thread
-        if(self.__thread.isAlive()):
+        # setting up thread
+        if (self.__thread.isAlive()):
             self.__thread.join()
         self.__thread = threading.Thread(target=self.thread_work)
 
-        #start thread
+        # start thread
         if self.__connected:
             self.__thread.start()
 
@@ -363,7 +363,8 @@ class GUI:
         # checking gaze data and open new window
         if (len(self.__gaze_data_lists[1]) != 0):
             self.__window.withdraw()
-            self.newWindow = dash.Dashboard(self.__gaze_data_lists, self.__avg_pupil_size, self.compute_avg_pupil_list(self.__pupil_data_lists))
+            self.newWindow = dash.Dashboard(self.__gaze_data_lists, self.__avg_pupil_size,
+                                            self.compute_avg_pupil_list(self.__pupil_data_lists))
         else:
             print("No gazedata but u get some")
             self.__window.withdraw()
@@ -371,7 +372,8 @@ class GUI:
             # feeding in avg pupil size
             for x in len(self.__pupil_data_lists):
                 self.__pupil_data_lists[x] = self.__avg_pupil_size
-            self.newWindow = dash.Dashboard(self.__gaze_data_lists_alternative, self.__avg_pupil_size, self.__pupil_data_lists)
+            self.newWindow = dash.Dashboard(self.__gaze_data_lists_alternative, self.__avg_pupil_size,
+                                            self.__pupil_data_lists)
 
     def reset_and_save_gaze_data(self, page_index):
         self.__thread.join(1)
@@ -439,8 +441,8 @@ class GUI:
 
         # setting the gaze array
         for x in range(0, len(self.__pdfViewer.get_all_pages())):
-             self.__gaze_data_lists.append([])
-             self.__pupil_data_lists.append([])
+            self.__gaze_data_lists.append([])
+            self.__pupil_data_lists.append([])
 
     def read_pdf(self, file):
         if bool(self.__page_cache):
@@ -498,4 +500,4 @@ class GUI:
         return avg_list
 
     def clean_list(self, list):
-        return [x for x in list if (not(math.isnan(x)))]
+        return [x for x in list if (not (math.isnan(x)))]
