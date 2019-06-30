@@ -7,6 +7,7 @@ import util.pdfViewer as pdfV
 import src.UI.dashboard as dash
 import time
 import math
+import itertools
 from PIL import ImageTk
 
 
@@ -362,11 +363,15 @@ class GUI:
         # checking gaze data and open new window
         if (len(self.__gaze_data_lists[1]) != 0):
             self.__window.withdraw()
-            self.newWindow = dash.Dashboard(self.__gaze_data_lists)
+            self.newWindow = dash.Dashboard(self.__gaze_data_lists, self.compute_avg_pupil_size(self.__pupil_data_lists))
         else:
             print("No gazedata but u get some")
             self.__window.withdraw()
-            self.newWindow = dash.Dashboard(self.__gaze_data_lists_alternative)
+
+            # feeding in avg pupil size
+            for x in len(self.__pupil_data_lists):
+                self.__pupil_data_lists.append(self.__avg_pupil_size)
+            self.newWindow = dash.Dashboard(self.__gaze_data_lists_alternative, self.__pupil_data_lists)
 
     def reset_and_save_gaze_data(self, page_index):
         self.__thread.join(1)
@@ -480,8 +485,15 @@ class GUI:
 
     def compute_avg_pupil_size(self, pupil_list):
         avg_list = []
+
+        # flatten and clean list
         for x in range(0, len(pupil_list)):
-            avg_list.append(sum(pupil_list[x]))
+            flattened_list = list(itertools.chain.from_iterable(pupil_list[x]))
+            cleaned_list = self.clean_list(flattened_list)
+            if len(cleaned_list) > 0:
+                avg_list.append(sum(cleaned_list) / len(cleaned_list))
+            else:
+                avg_list.append('NaN')
 
         return avg_list
 
