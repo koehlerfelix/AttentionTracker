@@ -370,7 +370,7 @@ class GUI:
             self.__window.withdraw()
 
             # feeding in avg pupil size
-            for x in len(self.__pupil_data_lists):
+            for x in range(0, len(self.__gaze_data_lists)):
                 self.__pupil_data_lists[x] = self.__avg_pupil_size
             self.newWindow = dash.Dashboard(self.__gaze_data_lists_alternative, self.__avg_pupil_size,
                                             self.__pupil_data_lists)

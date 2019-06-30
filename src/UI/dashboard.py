@@ -45,6 +45,7 @@ class Dashboard(tk.Toplevel):
         self.btn_show.pack(side="top", padx=5, pady=5)
 
         print("Avg Pupil sizes: ", self.__pupil_data_list)
+        print("Gaze Points ", self.__gaze_data_list)
 
     def close_window(self):
         self.destroy()
