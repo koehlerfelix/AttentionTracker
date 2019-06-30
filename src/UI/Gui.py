@@ -363,7 +363,7 @@ class GUI:
         # checking gaze data and open new window
         if (len(self.__gaze_data_lists[1]) != 0):
             self.__window.withdraw()
-            self.newWindow = dash.Dashboard(self.__gaze_data_lists, self.compute_avg_pupil_size(self.__pupil_data_lists))
+            self.newWindow = dash.Dashboard(self.__gaze_data_lists, self.__avg_pupil_size, self.compute_avg_pupil_list(self.__pupil_data_lists))
         else:
             print("No gazedata but u get some")
             self.__window.withdraw()
@@ -483,7 +483,7 @@ class GUI:
     def is_connected(self):
         return self.__connected
 
-    def compute_avg_pupil_size(self, pupil_list):
+    def compute_avg_pupil_list(self, pupil_list):
         avg_list = []
 
         # flatten and clean list
