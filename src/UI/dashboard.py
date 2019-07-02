@@ -6,8 +6,10 @@ class Dashboard(tk.Toplevel):
 
     # gaze data list hat 2 listen: [0] hat keine "NaN" werte [1] hat welche
 
-    def __init__(self, __gaze_data_list):
-        self.__gaze_data_list = __gaze_data_list
+    def __init__(self, gaze_data_list, avg_pupil_size, pupil_data_list):
+        self.__gaze_data_list = gaze_data_list
+        self.__pupil_data_list = pupil_data_list
+        self.__avg_pupil_size = avg_pupil_size
 
         tk.Toplevel.__init__(self)
 
@@ -41,6 +43,9 @@ class Dashboard(tk.Toplevel):
         self.btn_show = Button(self, text="show", width=15, bg='white',
                                command=lambda: self.show_gaze_points(window_x, window_y))
         self.btn_show.pack(side="top", padx=5, pady=5)
+
+        print("Avg Pupil sizes: ", self.__pupil_data_list)
+        print("Gaze Points ", self.__gaze_data_list)
 
     def close_window(self):
         self.destroy()
