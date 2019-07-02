@@ -3,10 +3,13 @@ from tkinter import *
 
 
 class Dashboard(tk.Toplevel):
+    # gaze data list hat 2 listen: [0] hat keine "NaN" werte [1] hat welche
 
-    def __init__(self, gaze_data_list, page_cache):
-        self.__page_cache = page_cache
+    def __init__(self, gaze_data_list, avg_pupil_size, pupil_data_list, page_cache):
         self.__gaze_data_list = gaze_data_list
+        self.__pupil_data_list = pupil_data_list
+        self.__avg_pupil_size = avg_pupil_size
+        self.__page_cache = page_cache
 
         tk.Toplevel.__init__(self)
 
@@ -47,6 +50,9 @@ class Dashboard(tk.Toplevel):
                                command=lambda: self.show_gaze_points(canvas, window_x, window_y))
         self.btn_show.pack(side="top", padx=5, pady=5)
 
+        print("Avg Pupil sizes: ", self.__pupil_data_list)
+        print("Gaze Points ", self.__gaze_data_list)
+
     def close_window(self):
         self.destroy()
 
@@ -63,4 +69,7 @@ class Dashboard(tk.Toplevel):
             #else:
             canvas.create_text(x, y, text="x")
 
+        # for i in range(len(self.__gaze_data_list[0])):
+        #    self.__canvas.create_text(self.__gaze_data_list[0][i][0] * window_x, self.__gaze_data_list[0][i][1] * window_y,
+        #                              text="x")
         print("finished printing")
