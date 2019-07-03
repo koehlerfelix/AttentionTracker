@@ -33,8 +33,6 @@ class Dashboard(tk.Toplevel):
         frame = Frame(self, borderwidth=1, background='#1E1E1E')
         frame.pack(fill=BOTH, expand=True)
 
-
-
         # Button actions
         self.btn_finish = Button(self, text="finish", width=15, bg='white', command=self.close_window)
         self.btn_finish.pack(side="bottom", padx=5, pady=5)
@@ -44,7 +42,6 @@ class Dashboard(tk.Toplevel):
         canvas = FigureCanvasTkAgg(f, self)
         canvas.draw()
         canvas.get_tk_widget().pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True)
-
         canvas._tkcanvas.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
 
@@ -86,7 +83,7 @@ class Dashboard(tk.Toplevel):
         a = f.add_subplot(111)
         a.bar(x, y, width, color="red", linewidth=1.0) #gesamtzeit
         a.bar(x, offscreen_time, width, color="blue", linewidth=1.0) #offscreen
-        a.set_ylabel('Time per Slide Rot:gesamt, blau:offscreen')
+        a.set_ylabel('Time per Slide (red:offscreen_time)')
         a.set_xlabel('Slide')
 
         print('offscreen time: ', offscreen_time)
