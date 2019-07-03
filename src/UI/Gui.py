@@ -542,6 +542,7 @@ class GUI:
             else:
                 current_page_index = next_page_index - 1
             self.reset_and_save_gaze_data(current_page_index)
+            self.flatten_gaze_list()
 
         # checking gaze data and open new window
         if (len(self.__gaze_data_lists[1]) != 0):
@@ -566,13 +567,7 @@ class GUI:
         self.__gaze_data_lists[page_index].append(eyetracker.get_gaze_data())
         self.__pupil_data_lists[page_index].append(eyetracker.get_pupil_data())
 
-        # flatten list
-        flattened_list = list(itertools.chain.from_iterable(self.__gaze_data_lists[page_index]))
-        self.__gaze_data_lists[page_index] = flattened_list
-
         print('Gaze Data on Page ', page_index + 1, ': ', self.__gaze_data_lists[page_index])
-
-
 
     def scan_pupil_size(self):
         print("start scan")
@@ -690,3 +685,8 @@ class GUI:
 
     def clean_list(self, list):
         return [x for x in list if (not (math.isnan(x)))]
+
+    def flatten_gaze_list(self):
+        for x in range(len(self.__gaze_data_lists)):
+            flattened_list = list(itertools.chain.from_iterable(self.__gaze_data_lists[x]))
+            self.__gaze_data_lists[x] = flattened_list
