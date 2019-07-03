@@ -1,9 +1,9 @@
 import tobii_research as tr
-import eyetracker.eyetracker as eyetracker
+import src.eyetracker.eyetracker as eyetracker
 from tkinter import *
 from tkinter import filedialog
 import threading
-import util.pdfViewer as pdfV
+import src.util.pdfViewer as pdfV
 import src.UI.dashboard as dash
 import time
 import math
