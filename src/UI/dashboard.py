@@ -6,6 +6,7 @@ import matplotlib
 matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
+import math
 
 
 class Dashboard(tk.Toplevel):
@@ -66,8 +67,15 @@ class Dashboard(tk.Toplevel):
         x = range(xlen)
         y = []
         i = 0
+        offscreen_time = []
         while i < xlen:
+            offscreen_time.append(0)
             y.append(len(self.__gaze_data_list[i]) / 90)
+
+            for gazepoint in self.__gaze_data_list[i]:
+                if math.isnan(gazepoint[0]):
+                    offscreen_time[i] = offscreen_time[i] + (1/90)
+
             i += 1
         width = 0.35 #width of the bars
 
@@ -76,6 +84,9 @@ class Dashboard(tk.Toplevel):
         a.bar(x, y, width, color="blue", linewidth=1.0)
         a.set_ylabel('Time per Slide')
         a.set_xlabel('Slide')
+
+        print('offscreen time: ', offscreen_time)
+
         return f
 
 
