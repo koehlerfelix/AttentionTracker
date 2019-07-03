@@ -82,6 +82,7 @@ class Dashboard(tk.Toplevel):
         f = Figure(figsize=(4, 4), dpi=100)
         a = f.add_subplot(111)
         a.bar(x, y, width, color="blue", linewidth=1.0)
+        a.bar(x, offscreen_time, width, color="red", linewidth=1.0)
         a.set_ylabel('Time per Slide')
         a.set_xlabel('Slide')
 
