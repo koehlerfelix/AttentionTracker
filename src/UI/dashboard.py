@@ -1,5 +1,9 @@
 import tkinter as tk
 from tkinter import *
+import matplotlib.pyplot as plt
+import plotly.plotly as py
+import plotly.tools as tls
+import numpy as np
 
 
 class Dashboard(tk.Toplevel):
@@ -46,6 +50,8 @@ class Dashboard(tk.Toplevel):
 
         print("Avg Pupil sizes: ", self.__pupil_data_list)
         print("Gaze Points ", self.__gaze_data_list)
+        self.show_time_per_page_diagramm()
+
 
     def close_window(self):
         self.destroy()
@@ -60,3 +66,23 @@ class Dashboard(tk.Toplevel):
             self.__canvas.create_text(self.__gaze_data_list[0][i][0] * window_x, self.__gaze_data_list[0][i][1] * window_y,
                                       text="x")
         print("finished printing")
+
+    def show_time_per_page_diagramm(self):
+        xlen = len(self.__gaze_data_list)
+        x = range(xlen)
+        y = []
+        i = 0
+        while i < xlen:
+            y.append(len(self.__gaze_data_list[i]) / 90)
+            i += 1
+        width = 0.35 #width of the bars
+        plt.figure(figsize=(8, 6), dpi=80)
+        plt.subplot(111)
+        plt.bar(x, y, width, color="blue", linewidth=1.0)
+        plt.xlabel("Slide")
+        plt.ylabel("Seconds per Slide")
+        plt.show()
+
+
+
+
