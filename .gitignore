@@ -3,11 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-.idea/workspace.xml
-
 # user specific files
 src/static/img/*
-src/temp-plot.html
 
 # C extensions
 *.so

@@ -10,13 +10,13 @@ import math
 
 
 class Dashboard(tk.Toplevel):
+
     # gaze data list hat 2 listen: [0] hat keine "NaN" werte [1] hat welche
 
-    def __init__(self, gaze_data_list, avg_pupil_size, pupil_data_list, page_cache):
+    def __init__(self, gaze_data_list, avg_pupil_size, pupil_data_list):
         self.__gaze_data_list = gaze_data_list
         self.__pupil_data_list = pupil_data_list
         self.__avg_pupil_size = avg_pupil_size
-        self.__page_cache = page_cache
 
         tk.Toplevel.__init__(self)
 
@@ -35,7 +35,6 @@ class Dashboard(tk.Toplevel):
 
         print('pupil list: ', self.__pupil_data_list)
 
-
         # Button actions
         self.btn_finish = Button(self, text="finish", width=15, bg='white', command=self.close_window)
         self.btn_finish.pack(side="bottom", padx=5, pady=5)
@@ -49,26 +48,18 @@ class Dashboard(tk.Toplevel):
         canvas._tkcanvas.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
 
-
     def close_window(self):
         self.destroy()
 
-    def show_gaze_points(self, canvas, window_x, window_y):
+    def show_gaze_points(self, window_x, window_y):
         img = PhotoImage(file="images/Beispiel.png")
-        canvas.create_image(0, 0, anchor=NW, image=img)
+        self.__canvas.create_image(0, 0, anchor=NW, image=img)
 
-        for i in range(len(self.__gaze_data_list)):
-            x = self.__gaze_data_list[i][0] * window_x
-            y = self.__gaze_data_list[i][1] * window_y
+        print(self.__gaze_data_list[0])
 
-            #if (x < self.canvas_rootx) or (x > self.canvas_rootx + self.canvas_width) or (y < self.canvas_rooty) or (y > self.canvas_rooty + self.canvas_height):
-            #    continue
-            #else:
-            canvas.create_text(x, y, text="x")
-
-        # for i in range(len(self.__gaze_data_list[0])):
-        #    self.__canvas.create_text(self.__gaze_data_list[0][i][0] * window_x, self.__gaze_data_list[0][i][1] * window_y,
-        #                              text="x")
+        for i in range(len(self.__gaze_data_list[0])):
+            self.__canvas.create_text(self.__gaze_data_list[0][i][0] * window_x, self.__gaze_data_list[0][i][1] * window_y,
+                                      text="x")
         print("finished printing")
 
     def get_time_per_page_diagramm(self):
