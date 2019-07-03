@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1023bc04-ed5e-4415-b49e-d95e2f54eb99" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Gui.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UI/diagramms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/dashboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/dashboard.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/UI/dashboard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="77" selection-start-line="77" selection-end-line="77" />
+            <state relative-caret-position="165">
+              <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -42,9 +41,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI/diagramms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="116" column="69" lean-forward="true" selection-start-line="106" selection-start-column="7" selection-end-line="116" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI/Gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-823">
+            <state relative-caret-position="-6125">
               <caret line="312" column="70" selection-start-line="312" selection-start-column="70" selection-end-line="312" selection-end-column="70" />
             </state>
           </provider>
@@ -93,6 +101,7 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/eyetracker/eyetracker.py" />
         <option value="$PROJECT_DIR$/src/UI/Gui.py" />
+        <option value="$PROJECT_DIR$/src/UI/diagramms.py" />
         <option value="$PROJECT_DIR$/src/UI/dashboard.py" />
       </list>
     </option>
@@ -110,6 +119,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -144,7 +154,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -188,6 +197,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="diagramms" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AttentionTracker" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/UI" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/UI/diagramms.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python">
       <module name="AttentionTracker" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -212,6 +243,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.diagramms" />
         <item itemvalue="Python.dashboard" />
       </list>
     </recent_temporary>
@@ -231,6 +263,7 @@
       <workItem from="1560760649855" duration="4129000" />
       <workItem from="1561991043524" duration="1768000" />
       <workItem from="1562143386603" duration="6968000" />
+      <workItem from="1562157247711" duration="2163000" />
     </task>
     <task id="LOCAL-00001" summary="Open new window and close current window">
       <created>1560616418767</created>
@@ -292,18 +325,18 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41979000" />
+    <option name="totallyTimeSpent" value="44142000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14910026" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15102828" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.23472223" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.3263889" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39444444" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -317,7 +350,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.5308483" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.2062982" />
       <window_info anchor="right" id="Database" order="4" weight="0.32969153" />
     </layout>
   </component>
@@ -336,7 +369,8 @@
     <option name="LAST_COMMIT_MESSAGE" value="Add some Gaze data to gui" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/AttentionTracker$main.coverage" NAME="main Coverage Results" MODIFIED="1562150347720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/AttentionTracker$main.coverage" NAME="main Coverage Results" MODIFIED="1562159519830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/AttentionTracker$diagramms.coverage" NAME="diagramms Coverage Results" MODIFIED="1562158747618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/UI" />
     <SUITE FILE_PATH="coverage/AttentionTracker$start.coverage" NAME="main Coverage Results" MODIFIED="1559663642604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
@@ -437,20 +471,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/images/Beispiel.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/Gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-823">
+        <state relative-caret-position="-6125">
           <caret line="312" column="70" selection-start-line="312" selection-start-column="70" selection-end-line="312" selection-end-column="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/images/Beispiel.png">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$PROJECT_DIR$/src/UI/diagramms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="116" column="69" lean-forward="true" selection-start-line="106" selection-start-column="7" selection-end-line="116" selection-end-column="69" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/dashboard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        <state relative-caret-position="165">
+          <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>

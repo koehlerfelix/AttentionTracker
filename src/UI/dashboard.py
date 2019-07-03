@@ -2,6 +2,10 @@ import tkinter as tk
 from tkinter import *
 import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib
+matplotlib.use("TkAgg")
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
 
 
 class Dashboard(tk.Toplevel):
@@ -28,27 +32,19 @@ class Dashboard(tk.Toplevel):
         frame = Frame(self, borderwidth=1, background='#1E1E1E')
         frame.pack(fill=BOTH, expand=True)
 
-        # making canvas
-        self.__canvas = Canvas(frame, width=window_x - 130, height=window_y - 230, background='white')
-        self.__canvas.pack(expand='True')
 
-        # loding image into canvas !!!!not working!!!! and i have no clue why
-        img = PhotoImage(file="images/Beispiel.png")
-        img = img.subsample(2)
-        self.__canvas.create_image(20, 20, anchor=NW, image=img)
-        #self.__canvas.update()
 
         # Button actions
         self.btn_finish = Button(self, text="finish", width=15, bg='white', command=self.close_window)
-        self.btn_finish.pack(side="right", padx=5, pady=5)
+        self.btn_finish.pack(side="bottom", padx=5, pady=5)
 
-        self.btn_show = Button(self, text="show", width=15, bg='white',
-                               command=lambda: self.show_gaze_points(window_x, window_y))
-        self.btn_show.pack(side="top", padx=5, pady=5)
+        #self.show_time_per_page_diagramm()
+        f = self.get_time_per_page_diagramm()
+        canvas = FigureCanvasTkAgg(f, self)
+        canvas.draw()
+        canvas.get_tk_widget().pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True)
 
-        print("Avg Pupil sizes: ", self.__pupil_data_list)
-        print("Gaze Points ", self.__gaze_data_list)
-        self.show_time_per_page_diagramm()
+        canvas._tkcanvas.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
 
     def close_window(self):
@@ -65,7 +61,7 @@ class Dashboard(tk.Toplevel):
                                       text="x")
         print("finished printing")
 
-    def show_time_per_page_diagramm(self):
+    def get_time_per_page_diagramm(self):
         xlen = len(self.__gaze_data_list)
         x = range(xlen)
         y = []
@@ -74,12 +70,13 @@ class Dashboard(tk.Toplevel):
             y.append(len(self.__gaze_data_list[i]) / 90)
             i += 1
         width = 0.35 #width of the bars
-        plt.figure(figsize=(8, 6), dpi=80)
-        plt.subplot(111)
-        plt.bar(x, y, width, color="blue", linewidth=1.0)
-        plt.xlabel("Slide")
-        plt.ylabel("Seconds per Slide")
-        plt.show()
+
+        f = Figure(figsize=(4, 4), dpi=100)
+        a = f.add_subplot(111)
+        a.bar(x, y, width, color="blue", linewidth=1.0)
+        a.set_ylabel('Time per Slide')
+        a.set_xlabel('Slide')
+        return f
 
 
 
