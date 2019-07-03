@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0d25e948-b6ce-41ff-9a17-654fa3033b83" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/dashboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/dashboard.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI/Gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="551" column="13" lean-forward="true" selection-start-line="551" selection-start-column="13" selection-end-line="551" selection-end-column="13" />
+            <state relative-caret-position="1288">
+              <caret line="477" column="110" selection-start-line="477" selection-start-column="110" selection-end-line="477" selection-end-column="110" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -48,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/UI/dashboard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="68" column="23" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
+            <state relative-caret-position="216">
+              <caret line="80" column="56" selection-start-line="80" selection-start-column="56" selection-end-line="80" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -99,8 +99,8 @@
         <option value="$PROJECT_DIR$/src/util/pdfConverter.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/eyetracker/eyetracker.py" />
-        <option value="$PROJECT_DIR$/src/UI/dashboard.py" />
         <option value="$PROJECT_DIR$/src/UI/Gui.py" />
+        <option value="$PROJECT_DIR$/src/UI/dashboard.py" />
       </list>
     </option>
   </component>
@@ -117,7 +117,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,6 +151,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -239,6 +239,7 @@
       <workItem from="1560760649855" duration="4129000" />
       <workItem from="1561991043524" duration="1768000" />
       <workItem from="1562143386603" duration="6968000" />
+      <workItem from="1562162346446" duration="1281000" />
     </task>
     <task id="LOCAL-00001" summary="Open new window and close current window">
       <created>1560616418767</created>
@@ -317,11 +318,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562157711749</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add offscreentime">
+      <created>1562163055932</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1562163055932</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41979000" />
+    <option name="totallyTimeSpent" value="43260000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -333,15 +341,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11889036" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12017995" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49867898" visible="true" weight="0.3026874" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49867898" visible="true" weight="0.37361112" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39321074" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -355,7 +363,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.5308483" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.5308483" />
       <window_info anchor="right" id="Database" order="4" weight="0.32969153" />
     </layout>
   </component>
@@ -374,10 +382,11 @@
     <MESSAGE value="Fix 3D Array with flatten operation" />
     <MESSAGE value="Fix issue with flatten method" />
     <MESSAGE value="Add missing import" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add missing import" />
+    <MESSAGE value="add offscreentime" />
+    <option name="LAST_COMMIT_MESSAGE" value="add offscreentime" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/AttentionTracker$main.coverage" NAME="main Coverage Results" MODIFIED="1562150347720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/AttentionTracker$main.coverage" NAME="main Coverage Results" MODIFIED="1562163637258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/AttentionTracker$start.coverage" NAME="main Coverage Results" MODIFIED="1559663642604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
@@ -467,13 +476,6 @@
     <entry file="file://$PROJECT_DIR$/src/images/Beispiel.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/dashboard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="68" column="23" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -483,11 +485,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/Gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="551" column="13" lean-forward="true" selection-start-line="551" selection-start-column="13" selection-end-line="551" selection-end-column="13" />
+        <state relative-caret-position="1288">
+          <caret line="477" column="110" selection-start-line="477" selection-start-column="110" selection-end-line="477" selection-end-column="110" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/dashboard.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="80" column="56" selection-start-line="80" selection-start-column="56" selection-end-line="80" selection-end-column="56" />
         </state>
       </provider>
     </entry>
