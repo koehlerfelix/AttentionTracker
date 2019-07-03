@@ -72,8 +72,10 @@ class Dashboard(tk.Toplevel):
             offscreen_time.append(0)
             y.append(len(self.__gaze_data_list[i]) / 90)
 
+            # calculate off screen time
             for gazepoint in self.__gaze_data_list[i]:
                 if math.isnan(gazepoint[0]):
+                    # for every nan + 90th second
                     offscreen_time[i] = offscreen_time[i] + (1/90)
 
             i += 1
