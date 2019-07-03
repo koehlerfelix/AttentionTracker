@@ -5,19 +5,35 @@ from tkinter import filedialog
 import threading
 import src.util.pdfViewer as pdfV
 import src.UI.dashboard as dash
+
 import time
 import math
 import itertools
 from PIL import ImageTk
 
+# UI imports
+import src.UI.dashboard as dash
+import src.UI.summary as summary
+
+# UTIL imports
+import src.util.pdfViewer as pdfV
+import src.util.plotter as plot
+
 
 class GUI:
     __pdfViewer = pdfV.PdfViewer()
-    __page_cache = dict()  # provide 'fast render' in case page has been rendered before
+    _summary = summary.Summary(['absence'])
+    _summary.set_data('absence', 'asdf')
+
+    # provide 'fast render' in case page has been rendered before
+    __page_cache = dict()
+
+    # possible states of GUI: 'pdf', 'gaze', 'dashboard'
+    __state = ''
     __gaze_data_lists = [[[]]]
     __pupil_data_lists = [[]]
 
-    __avg_pupil_size = 3.2  # Random Value
+    __avg_pupil_size = 3.2  # random Value
 
     __gaze_data_lists_alternative = __gaze_data_lists_alternative = [[(0.17616580426692963, 0.9616665244102478),
                                                                       (math.nan,math.nan),(math.nan,math.nan),
@@ -495,16 +511,22 @@ class GUI:
         # set window reference
         self.__window = Tk()
 
+        # set content frame reference
+        self.__content_frame = Frame()
+
         # set label reference
         self.__label = Label()
 
         # set interaction items reference
         self.__pdf_nav_items = dict()
-        self.__eye_tracker_con_items = dict()
+        self.__tracker_items = dict()
 
         # set page counter
         self.__page_counter = StringVar()
         self.__page_counter.set('1 / 1')
+
+        # set plotter ref
+        self.__plotter = plot.Plotter(self.__window)
 
     def run(self):
 
@@ -529,61 +551,81 @@ class GUI:
         menu.add_cascade(label='Help', menu=help_menu)
         help_menu.add_command(label='About', command=self.show_help)
 
-        frame = Frame(self.__window, borderwidth=1, background='#1E1E1E')
-        frame.pack(fill=BOTH, expand=True)
+        # frame container for whole window, fills horizontally and vertically
+        # main_frame = Frame(self.__window, borderwidth=1, background='#3d3d3d')
+        # main_frame.pack(fill=BOTH, expand=True)
+
+        # content frame for all content
+        self.__content_frame = Frame(self.__window, background='#1E1E1E')
+        self.__content_frame.pack(fill=BOTH, side=TOP)
 
         # set starting page
         starting_page = PhotoImage(file="static/img/default.png")
         starting_page = starting_page.subsample(2, 2)
-        self.__label = Label(frame, image=starting_page,
+        self.__label = Label(self.__content_frame, image=starting_page,
+                             # width=starting_page.width(),
+                             # height=starting_page.height(),
                              width=window_x - 200,
                              height=window_y - 200,
                              background='#1E1E1E')
+        self.__label.pack(expand='True')
 
-        # lbl = Label(frame, text="Text", font=("Arial Bold", 20), bg='black', fg='white', width=80, height=20)
-        # lbl.plack(expand='True', padx=5, pady=5)
+        # footer frame
+        footer = Frame(self.__window, background='#1E1E1E')
+        footer.pack(fill=X, side=BOTTOM)
 
         # init eye-tracking buttons
-        btn_start = Button(text="Start", width=15, bg='grey',
+        # btn_start = Button(text="Start", width=15, bg='grey',
+        btn_start = Button(footer, text="Start", width=15, bg='grey',
                            command=lambda: self.start_collecting(btn_stop, btn_start))
-        self.__eye_tracker_con_items['btn_start'] = btn_start
+        self.__tracker_items['btn_start'] = btn_start
         btn_start.pack(side="left", padx=5, pady=5)
 
-        btn_stop = Button(text="Stop", width=15, bg='grey', state="disabled", command=self.stop_collecting)
-        self.__eye_tracker_con_items['btn_stop'] = btn_stop
+        btn_stop = Button(footer, text="Stop", width=15, bg='grey', state="disabled",
+                          command=self.stop_collecting)
+        self.__tracker_items['btn_stop'] = btn_stop
         btn_stop.pack(side="left", padx=5, pady=5)
 
-        btn_scan_pupil = Button(text="Scan Pupil", width=15, bg='grey',
+        btn_scan_pupil = Button(footer, text="Scan Pupil", width=15, bg='grey',
                                 command=self.scan_pupil_size)
-        self.__eye_tracker_con_items['btn_scan_pupil'] = btn_scan_pupil
+        self.__tracker_items['btn_scan_pupil'] = btn_scan_pupil
         btn_scan_pupil.pack(side="left", padx=5, pady=5)
 
         # init pdf navigation buttons
-        btn_next = Button(text="Next", width=15, bg='grey', state=DISABLED,
+        btn_next = Button(footer, text="Next", width=15, bg='grey', state=DISABLED,
                           command=lambda: self.next_page())
         self.__pdf_nav_items['btn_next'] = btn_next
         btn_next.pack(side="right", padx=5, pady=5)
 
-        btn_prev = Button(text="Previous", width=15, bg='grey', state=DISABLED,
+        btn_prev = Button(footer, text="Previous", width=15, bg='grey', state=DISABLED,
                           command=lambda: self.prev_page())
         self.__pdf_nav_items['btn_prev'] = btn_prev
         btn_prev.pack(side="right", padx=5, pady=5)
 
         # init page counter
-        my_label = Label(frame, textvariable=self.__page_counter, fg='#f2f2f2', bg='#1E1E1E',
-                         font='Verdana 10 bold', justify=CENTER) \
-            .pack(side=BOTTOM)
-
-        self.__label.pack(expand='True')
+        my_label = Label(footer, textvariable=self.__page_counter, fg='#f2f2f2', bg='#1E1E1E',
+                         font='Verdana 12 bold', justify=CENTER) \
+            .pack(side=BOTTOM, padx=5, pady=5)
 
         self.__window.mainloop()
 
-    # init help sub menu
+    # init help top menu
     def show_help(self):
         print('I should help but cannot atm..........send help pls')
 
     # view next page
     def next_page(self):
+        if self.__state == 'pdf':
+            self.create_gaze_page()
+            self.render_page(self.__pdfViewer.get_next_page_index())
+        elif self.__state == 'gaze':
+            # new page counter
+            self.__page_counter.set(' '.join([str(self.__plotter.get_current_page_index() + 1), '/',
+                                              str(self.__plotter.num_of_pages())]))
+            # render plotted gaze page
+            self.__plotter.pack_next_page()
+
+        '''
         next_page_index = self.__pdfViewer.get_next_page_index()
 
         # reset thread and save gaze data from page
@@ -597,6 +639,7 @@ class GUI:
         self.__thread.start()
 
         self.render_page(next_page_index)
+        '''
 
     # view previous page
     def prev_page(self):
@@ -615,22 +658,24 @@ class GUI:
 
         self.render_page(prev_page_index)
 
-    def start_collecting(self, btn_stop, btn_start):
-        btn_stop.configure(state="normal")
-        btn_start.configure(state="disabled")
+    def start_collecting(self):
+        # set appropriate button states
+        self.__tracker_items['btn_stop'].configure(state='normal')
+        self.__tracker_items['btn_start'].configure(state='disabled')
 
-        # setting up thread
-        if (self.__thread.isAlive()):
+        # set up data collection
+        if self.__thread.isAlive():
             self.__thread.join()
         self.__thread = threading.Thread(target=self.thread_work)
 
-        # start thread
+        # start data collection
         if self.__connected:
             self.__thread.start()
 
     def stop_collecting(self):
         if self.__connected:
-            print('stop collecting')
+            self.__thread.join(1)
+            self.__eye_tracker.stop_collecting()
 
             # save the last gaze data
             next_page_index = self.__pdfViewer.get_next_page_index()
@@ -640,8 +685,27 @@ class GUI:
                 current_page_index = next_page_index - 1
             self.reset_and_save_gaze_data(current_page_index)
             self.flatten_gaze_list()
+            
+        # remove pdf viewer label
+        #self.__label.pack_forget()
+        #self.__content_frame.pack_forget()
 
+          
+
+
+        # switch GUI state to dashboard (default) mode after data collection
+        self.__state = 'dashboard'
+        self._summary
+        # self.__state = 'gaze'
+        # self.next_page()
+
+    #def create_gaze_page(self):
         # checking gaze data and open new window
+        #self.__plotter.make_canvas(
+            #self.__page_cache[self.__pdfViewer.get_current_page_index()],
+            #self.__pdfViewer.get_current_page(),
+            #__gaze_data_list)
+
         if self.__gaze_data_lists[0] != [[]]:
             self.__window.withdraw()
             self.newWindow = dash.Dashboard(self.__gaze_data_lists, self.__avg_pupil_size,
@@ -707,6 +771,7 @@ class GUI:
             self.__connected = True
 
     def import_file(self):
+        self.__state = 'pdf'
         file = filedialog.askopenfilename(initialdir='/', title='Select pdf file',
                                           filetypes=[('pdf files', '*.pdf')])
         read_pdf_thread = threading.Thread(target=self.read_pdf(file))
@@ -731,10 +796,7 @@ class GUI:
         self.__pdfViewer.init_file(file)
 
     def render_page(self, page_index=0):
-        if page_index in self.__page_cache:
-            loaded_page = self.__page_cache[page_index]
-
-        else:
+        if page_index not in self.__page_cache:
             loaded_page = self.__pdfViewer.get_page(page_index)
 
             # compute resize dimensions
@@ -752,6 +814,9 @@ class GUI:
             loaded_page = ImageTk.PhotoImage(loaded_page)
             # save loaded page in cache
             self.__page_cache[page_index] = loaded_page
+
+        else:
+            loaded_page = self.__page_cache[page_index]
 
         # put new page into label
         self.__label.configure(image=loaded_page)

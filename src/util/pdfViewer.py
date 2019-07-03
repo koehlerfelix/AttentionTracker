@@ -24,6 +24,9 @@ class PdfViewer:
         if self.page_index_valid(page_index):
             return self.__pages[page_index]
 
+    def get_current_page_index(self):
+        return self.__current_page
+
     def get_next_page_index(self):
         if self.page_index_valid(self.__current_page + 1):
             return self.__current_page + 1
