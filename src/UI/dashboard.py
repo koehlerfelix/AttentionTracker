@@ -1,8 +1,6 @@
 import tkinter as tk
 from tkinter import *
 import matplotlib.pyplot as plt
-import plotly.plotly as py
-import plotly.tools as tls
 import numpy as np
 
 

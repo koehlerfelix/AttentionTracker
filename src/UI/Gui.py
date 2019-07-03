@@ -566,7 +566,13 @@ class GUI:
         self.__gaze_data_lists[page_index].append(eyetracker.get_gaze_data())
         self.__pupil_data_lists[page_index].append(eyetracker.get_pupil_data())
 
+        # flatten list
+        flattened_list = list(itertools.chain.from_iterable(self.__gaze_data_lists[page_index]))
+        self.__gaze_data_lists[page_index] = flattened_list
+
         print('Gaze Data on Page ', page_index + 1, ': ', self.__gaze_data_lists[page_index])
+
+
 
     def scan_pupil_size(self):
         print("start scan")
