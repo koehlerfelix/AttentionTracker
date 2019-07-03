@@ -39,10 +39,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI/Gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1288">
-              <caret line="477" column="110" selection-start-line="477" selection-start-column="110" selection-end-line="477" selection-end-column="110" />
+            <state relative-caret-position="-116">
+              <caret line="641" column="12" selection-start-line="641" selection-start-column="12" selection-end-line="641" selection-end-column="12" />
               <folding>
-                <element signature="e#0#27#0" expanded="true" />
+                <element signature="e#587#41826#0" />
+                <element signature="e#588#24385#0" />
+                <element signature="e#24456#29765#0" />
+                <element signature="e#29836#52592#0" />
+                <element signature="e#41860#42510#0" />
+                <element signature="e#41940#42031#0" />
+                <element signature="e#42540#45531#0" />
+                <element signature="e#43772#43875#0" />
+                <element signature="e#45591#45651#0" />
+                <element signature="e#45707#46148#0" />
+                <element signature="e#46208#46656#0" />
+                <element signature="e#47895#48307#0" />
+                <element signature="e#48375#48761#0" />
+                <element signature="e#48802#49335#0" />
+                <element signature="e#49372#49442#0" />
+                <element signature="e#49475#50158#0" />
+                <element signature="e#49628#49683#0" />
+                <element signature="e#49710#50158#0" />
+                <element signature="e#50195#50877#0" />
+                <element signature="e#50797#50877#0" />
+                <element signature="e#50917#51024#0" />
+                <element signature="e#51075#52394#0" />
+                <element signature="e#51194#52043#0" />
+                <element signature="e#52432#52455#0" />
+                <element signature="e#52515#52940#0" />
+                <element signature="e#52623#52915#0" />
+                <element signature="e#52982#53031#0" />
+                <element signature="e#53074#53265#0" />
+                <element signature="e#53131#53265#0" />
               </folding>
             </state>
           </provider>
@@ -51,8 +79,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/UI/dashboard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="80" column="56" selection-start-line="80" selection-start-column="56" selection-end-line="80" selection-end-column="56" />
+            <state relative-caret-position="377">
+              <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+              <folding>
+                <element signature="e#440#1580#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,6 +111,8 @@
       <find>__page_index</find>
       <find>grey</find>
       <find>#</find>
+      <find>fla</find>
+      <find>pupil</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -117,6 +150,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -151,7 +185,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -239,7 +272,6 @@
       <workItem from="1560760649855" duration="4129000" />
       <workItem from="1561991043524" duration="1768000" />
       <workItem from="1562143386603" duration="6968000" />
-      <workItem from="1562162346446" duration="1281000" />
     </task>
     <task id="LOCAL-00001" summary="Open new window and close current window">
       <created>1560616418767</created>
@@ -318,18 +350,32 @@
       <option name="project" value="LOCAL" />
       <updated>1562157711749</updated>
     </task>
-    <task id="LOCAL-00012" summary="add offscreentime">
-      <created>1562163055932</created>
+    <task id="LOCAL-00012" summary="fix eyetracker connection detection">
+      <created>1562160620731</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1562163055932</updated>
+      <updated>1562160620731</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="calculate offscreen time">
+      <created>1562162243750</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1562162243750</updated>
+    </task>
+    <task id="LOCAL-00014" summary="comment changes">
+      <created>1562162452326</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1562162452326</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43260000" />
+    <option name="totallyTimeSpent" value="41979000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -341,15 +387,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12017995" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11889036" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49867898" visible="true" weight="0.37361112" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49867898" visible="true" weight="0.23055163" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39321074" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -363,7 +409,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.5308483" />
+      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.5308483" />
       <window_info anchor="right" id="Database" order="4" weight="0.32969153" />
     </layout>
   </component>
@@ -382,11 +428,13 @@
     <MESSAGE value="Fix 3D Array with flatten operation" />
     <MESSAGE value="Fix issue with flatten method" />
     <MESSAGE value="Add missing import" />
-    <MESSAGE value="add offscreentime" />
-    <option name="LAST_COMMIT_MESSAGE" value="add offscreentime" />
+    <MESSAGE value="fix eyetracker connection detection" />
+    <MESSAGE value="calculate offscreen time" />
+    <MESSAGE value="comment changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="comment changes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/AttentionTracker$main.coverage" NAME="main Coverage Results" MODIFIED="1562163637258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/AttentionTracker$main.coverage" NAME="main Coverage Results" MODIFIED="1562150347720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/AttentionTracker$start.coverage" NAME="main Coverage Results" MODIFIED="1559663642604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
@@ -483,20 +531,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/numpy/lib/stride_tricks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="258" selection-start-line="258" selection-end-line="258" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="1809" selection-start-line="1809" selection-end-line="1809" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/axes/_axes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="2250" selection-start-line="2250" selection-end-line="2250" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/Gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1288">
-          <caret line="477" column="110" selection-start-line="477" selection-start-column="110" selection-end-line="477" selection-end-column="110" />
+        <state relative-caret-position="-116">
+          <caret line="641" column="12" selection-start-line="641" selection-start-column="12" selection-end-line="641" selection-end-column="12" />
           <folding>
-            <element signature="e#0#27#0" expanded="true" />
+            <element signature="e#587#41826#0" />
+            <element signature="e#588#24385#0" />
+            <element signature="e#24456#29765#0" />
+            <element signature="e#29836#52592#0" />
+            <element signature="e#41860#42510#0" />
+            <element signature="e#41940#42031#0" />
+            <element signature="e#42540#45531#0" />
+            <element signature="e#43772#43875#0" />
+            <element signature="e#45591#45651#0" />
+            <element signature="e#45707#46148#0" />
+            <element signature="e#46208#46656#0" />
+            <element signature="e#47895#48307#0" />
+            <element signature="e#48375#48761#0" />
+            <element signature="e#48802#49335#0" />
+            <element signature="e#49372#49442#0" />
+            <element signature="e#49475#50158#0" />
+            <element signature="e#49628#49683#0" />
+            <element signature="e#49710#50158#0" />
+            <element signature="e#50195#50877#0" />
+            <element signature="e#50797#50877#0" />
+            <element signature="e#50917#51024#0" />
+            <element signature="e#51075#52394#0" />
+            <element signature="e#51194#52043#0" />
+            <element signature="e#52432#52455#0" />
+            <element signature="e#52515#52940#0" />
+            <element signature="e#52623#52915#0" />
+            <element signature="e#52982#53031#0" />
+            <element signature="e#53074#53265#0" />
+            <element signature="e#53131#53265#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/dashboard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="80" column="56" selection-start-line="80" selection-start-column="56" selection-end-line="80" selection-end-column="56" />
+        <state relative-caret-position="377">
+          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+          <folding>
+            <element signature="e#440#1580#0" />
+          </folding>
         </state>
       </provider>
     </entry>
