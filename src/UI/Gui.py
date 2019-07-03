@@ -545,7 +545,7 @@ class GUI:
             self.flatten_gaze_list()
 
         # checking gaze data and open new window
-        if (len(self.__gaze_data_lists[1]) != 0):
+        if self.__gaze_data_lists[0] != [[]]:
             self.__window.withdraw()
             self.newWindow = dash.Dashboard(self.__gaze_data_lists, self.__avg_pupil_size,
                                             self.compute_avg_pupil_list(self.__pupil_data_lists))
