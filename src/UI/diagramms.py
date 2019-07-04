@@ -37,12 +37,12 @@ def get_avg_pupil_size_diagramm(pupil_size_list, avg_pupil_size):
     x = range(xlen)
     y = []
     for i in range(0, len(pupil_size_list)):
-        y.append((pupil_size_list[i] - avg_pupil_size))
+        y.append(((pupil_size_list[i] / avg_pupil_size) - 1) * 100)
     width = 0.35
     f = Figure(figsize=(4, 4), dpi=100)
     a = f.add_subplot(111)
     a.bar(x, y, width, color="blue", linewidth=1.0)
-    a.set_ylabel('Average pupil size')
+    a.set_ylabel('deviation of average pupil size in %')
     a.set_xlabel('Slide')
 
     return f
