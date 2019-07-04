@@ -32,11 +32,11 @@ def get_time_per_page_diagramm(gaze_data_list):
 
     return f
 
-def get_avrg_pupil_size_diagramm(pupil_size_list, avg_pupil_size):
+def get_avg_pupil_size_diagramm(pupil_size_list, avg_pupil_size):
     xlen = len(pupil_size_list)
     x = range(xlen)
     y = []
-    for i in range(0, len(pupil_size_list) - 1):
+    for i in range(0, len(pupil_size_list)):
         y.append((pupil_size_list[i] - avg_pupil_size))
     width = 0.35
     f = Figure(figsize=(4, 4), dpi=100)

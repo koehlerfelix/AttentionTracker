@@ -40,13 +40,18 @@ class Dashboard(tk.Toplevel):
         self.btn_finish = Button(self, text="finish", width=15, bg='white', command=self.close_window)
         self.btn_finish.pack(side="bottom", padx=5, pady=5)
 
-        #self.show_time_per_page_diagramm()
-        f = diagramms.get_time_per_page_diagramm(self.__gaze_data_list)
-        canvas = FigureCanvasTkAgg(f, self)
-        canvas.draw()
-        canvas.get_tk_widget().pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True)
 
-        canvas._tkcanvas.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+        time_diagramm = diagramms.get_time_per_page_diagramm(self.__gaze_data_list)
+        canvas = FigureCanvasTkAgg(time_diagramm, self)
+        canvas.draw()
+        canvas.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        canvas._tkcanvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        pupil_diagramm = diagramms.get_avg_pupil_size_diagramm(self.__pupil_data_list, self.__avg_pupil_size)
+        canvas = FigureCanvasTkAgg(pupil_diagramm, self)
+        canvas.draw()
+        canvas.get_tk_widget().pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
+        canvas._tkcanvas.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
 
 
     def close_window(self):
