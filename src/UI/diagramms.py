@@ -23,9 +23,10 @@ def get_time_per_page_diagramm(gaze_data_list):
 
     f = Figure(figsize=(4, 4), dpi=100)
     a = f.add_subplot(111)
-    a.bar(x, y, width, color="red", linewidth=1.0)  # gesamtzeit
-    a.bar(x, offscreen_time, width, color="blue", linewidth=1.0)  # offscreen
-    a.set_ylabel('Time per Slide Rot:gesamt, blau:offscreen')
+    a.bar(x, y, width, color="red", linewidth=1.0, label="offscreen")  # gesamtzeit
+    a.bar(x, offscreen_time, width, color="blue", linewidth=1.0, label="onscreen")  # offscreen
+    a.legend(loc='upper right')
+    a.set_ylabel('Time per Slide')
     a.set_xlabel('Slide')
 
     print('offscreen time: ', offscreen_time)
