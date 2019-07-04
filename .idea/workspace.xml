@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d25e948-b6ce-41ff-9a17-654fa3033b83" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/dashboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/dashboard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/Gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Gui.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,52 +36,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/UI/Gui.py">
+        <entry file="file://$PROJECT_DIR$/src/UI/dashboard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-116">
-              <caret line="641" column="12" selection-start-line="641" selection-start-column="12" selection-end-line="641" selection-end-column="12" />
+            <state relative-caret-position="135">
+              <caret line="49" selection-start-line="49" selection-end-line="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI/diagramms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="41" selection-start-line="41" selection-end-line="41" />
               <folding>
-                <element signature="e#587#41826#0" />
-                <element signature="e#588#24385#0" />
-                <element signature="e#24456#29765#0" />
-                <element signature="e#29836#52592#0" />
-                <element signature="e#41860#42510#0" />
-                <element signature="e#41940#42031#0" />
-                <element signature="e#42540#45531#0" />
-                <element signature="e#43772#43875#0" />
-                <element signature="e#45591#45651#0" />
-                <element signature="e#45707#46148#0" />
-                <element signature="e#46208#46656#0" />
-                <element signature="e#47895#48307#0" />
-                <element signature="e#48375#48761#0" />
-                <element signature="e#48802#49335#0" />
-                <element signature="e#49372#49442#0" />
-                <element signature="e#49475#50158#0" />
-                <element signature="e#49628#49683#0" />
-                <element signature="e#49710#50158#0" />
-                <element signature="e#50195#50877#0" />
-                <element signature="e#50797#50877#0" />
-                <element signature="e#50917#51024#0" />
-                <element signature="e#51075#52394#0" />
-                <element signature="e#51194#52043#0" />
-                <element signature="e#52432#52455#0" />
-                <element signature="e#52515#52940#0" />
-                <element signature="e#52623#52915#0" />
-                <element signature="e#52982#53031#0" />
-                <element signature="e#53074#53265#0" />
-                <element signature="e#53131#53265#0" />
+                <element signature="e#0#11#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/UI/dashboard.py">
+        <entry file="file://$PROJECT_DIR$/src/UI/Gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+            <state relative-caret-position="355">
+              <caret line="549" column="109" selection-start-line="549" selection-start-column="109" selection-end-line="549" selection-end-column="109" />
               <folding>
-                <element signature="e#440#1580#0" />
+                <element signature="e#0#27#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -132,8 +112,9 @@
         <option value="$PROJECT_DIR$/src/util/pdfConverter.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/eyetracker/eyetracker.py" />
-        <option value="$PROJECT_DIR$/src/UI/Gui.py" />
         <option value="$PROJECT_DIR$/src/UI/dashboard.py" />
+        <option value="$PROJECT_DIR$/src/UI/diagramms.py" />
+        <option value="$PROJECT_DIR$/src/UI/Gui.py" />
       </list>
     </option>
   </component>
@@ -167,6 +148,12 @@
               <item name="AttentionTracker" type="b2602c69:ProjectViewProjectNode" />
               <item name="AttentionTracker" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="chart" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AttentionTracker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AttentionTracker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -174,12 +161,6 @@
               <item name="AttentionTracker" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="UI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AttentionTracker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AttentionTracker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -254,6 +235,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.dashboard" />
+        <item itemvalue="Python.dashboard" />
       </list>
     </recent_temporary>
   </component>
@@ -272,6 +254,7 @@
       <workItem from="1560760649855" duration="4129000" />
       <workItem from="1561991043524" duration="1768000" />
       <workItem from="1562143386603" duration="6968000" />
+      <workItem from="1562226441731" duration="1147000" />
     </task>
     <task id="LOCAL-00001" summary="Open new window and close current window">
       <created>1560616418767</created>
@@ -371,11 +354,25 @@
       <option name="project" value="LOCAL" />
       <updated>1562162452326</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="outsource diagrams in an extra file and implement pupil diagramm">
+      <created>1562226744561</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1562226744561</updated>
+    </task>
+    <task id="LOCAL-00016" summary="corrected pupil diagramm">
+      <created>1562227354389</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1562227354389</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41979000" />
+    <option name="totallyTimeSpent" value="43126000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -387,16 +384,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11889036" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12017995" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49867898" visible="true" weight="0.23055163" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39321074" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49867898" visible="true" weight="0.36944443" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39305556" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32956153" />
@@ -409,7 +406,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.5308483" />
+      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.33804628" />
       <window_info anchor="right" id="Database" order="4" weight="0.32969153" />
     </layout>
   </component>
@@ -431,10 +428,54 @@
     <MESSAGE value="fix eyetracker connection detection" />
     <MESSAGE value="calculate offscreen time" />
     <MESSAGE value="comment changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="comment changes" />
+    <MESSAGE value="outsource diagrams in an extra file and implement pupil diagramm" />
+    <MESSAGE value="corrected pupil diagramm" />
+    <option name="LAST_COMMIT_MESSAGE" value="corrected pupil diagramm" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/UI/diagramms.py</url>
+          <line>41</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/UI/diagramms.py</url>
+          <line>39</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/UI/diagramms.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/UI/diagramms.py</url>
+          <line>35</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/UI/diagramms.py</url>
+          <line>36</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/UI/diagramms.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/UI/diagramms.py</url>
+          <line>40</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/AttentionTracker$main.coverage" NAME="main Coverage Results" MODIFIED="1562150347720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/AttentionTracker$main.coverage" NAME="main Coverage Results" MODIFIED="1562227802417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/AttentionTracker$dashboard.coverage" NAME="dashboard Coverage Results" MODIFIED="1562226669963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/UI" />
     <SUITE FILE_PATH="coverage/AttentionTracker$start.coverage" NAME="main Coverage Results" MODIFIED="1559663642604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
@@ -524,13 +565,6 @@
     <entry file="file://$PROJECT_DIR$/src/images/Beispiel.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/numpy/lib/stride_tricks.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
@@ -552,50 +586,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/Gui.py">
+    <entry file="file://$PROJECT_DIR$/src/UI/dashboard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-116">
-          <caret line="641" column="12" selection-start-line="641" selection-start-column="12" selection-end-line="641" selection-end-column="12" />
+        <state relative-caret-position="135">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/diagramms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
           <folding>
-            <element signature="e#587#41826#0" />
-            <element signature="e#588#24385#0" />
-            <element signature="e#24456#29765#0" />
-            <element signature="e#29836#52592#0" />
-            <element signature="e#41860#42510#0" />
-            <element signature="e#41940#42031#0" />
-            <element signature="e#42540#45531#0" />
-            <element signature="e#43772#43875#0" />
-            <element signature="e#45591#45651#0" />
-            <element signature="e#45707#46148#0" />
-            <element signature="e#46208#46656#0" />
-            <element signature="e#47895#48307#0" />
-            <element signature="e#48375#48761#0" />
-            <element signature="e#48802#49335#0" />
-            <element signature="e#49372#49442#0" />
-            <element signature="e#49475#50158#0" />
-            <element signature="e#49628#49683#0" />
-            <element signature="e#49710#50158#0" />
-            <element signature="e#50195#50877#0" />
-            <element signature="e#50797#50877#0" />
-            <element signature="e#50917#51024#0" />
-            <element signature="e#51075#52394#0" />
-            <element signature="e#51194#52043#0" />
-            <element signature="e#52432#52455#0" />
-            <element signature="e#52515#52940#0" />
-            <element signature="e#52623#52915#0" />
-            <element signature="e#52982#53031#0" />
-            <element signature="e#53074#53265#0" />
-            <element signature="e#53131#53265#0" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/dashboard.py">
+    <entry file="file://$PROJECT_DIR$/src/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+        <state relative-caret-position="119">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/Gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="549" column="109" selection-start-line="549" selection-start-column="109" selection-end-line="549" selection-end-column="109" />
           <folding>
-            <element signature="e#440#1580#0" />
+            <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>

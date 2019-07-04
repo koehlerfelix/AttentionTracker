@@ -7,6 +7,7 @@ matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 import math
+import src.UI.diagramms as diagramms
 
 
 class Dashboard(tk.Toplevel):
@@ -39,13 +40,18 @@ class Dashboard(tk.Toplevel):
         self.btn_finish = Button(self, text="finish", width=15, bg='white', command=self.close_window)
         self.btn_finish.pack(side="bottom", padx=5, pady=5)
 
-        #self.show_time_per_page_diagramm()
-        f = self.get_time_per_page_diagramm()
-        canvas = FigureCanvasTkAgg(f, self)
-        canvas.draw()
-        canvas.get_tk_widget().pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True)
 
-        canvas._tkcanvas.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+        time_diagramm = diagramms.get_time_per_page_diagramm(self.__gaze_data_list)
+        canvas = FigureCanvasTkAgg(time_diagramm, self)
+        canvas.draw()
+        canvas.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        canvas._tkcanvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        pupil_diagramm = diagramms.get_avg_pupil_size_diagramm(self.__pupil_data_list, self.__avg_pupil_size)
+        canvas = FigureCanvasTkAgg(pupil_diagramm, self)
+        canvas.draw()
+        canvas.get_tk_widget().pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
+        canvas._tkcanvas.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
 
 
     def close_window(self):
@@ -61,34 +67,3 @@ class Dashboard(tk.Toplevel):
             self.__canvas.create_text(self.__gaze_data_list[0][i][0] * window_x, self.__gaze_data_list[0][i][1] * window_y,
                                       text="x")
         print("finished printing")
-
-    def get_time_per_page_diagramm(self):
-        xlen = len(self.__gaze_data_list)
-        x = range(xlen)
-        y = []
-        i = 0
-        offscreen_time = []
-        while i < xlen:
-            offscreen_time.append(0)
-            time = len(self.__gaze_data_list[i]) / 90
-            y.append(time)
-
-            # calculate off screen time
-            for gazepoint in self.__gaze_data_list[i]:
-                if math.isnan(gazepoint[0]):
-                    # for every nan + 90th second
-                    offscreen_time[i] = offscreen_time[i] + (1/90)
-            offscreen_time[i] = time - offscreen_time[i]
-            i += 1
-        width = 0.35 #width of the bars
-
-        f = Figure(figsize=(4, 4), dpi=100)
-        a = f.add_subplot(111)
-        a.bar(x, y, width, color="red", linewidth=1.0) #gesamtzeit
-        a.bar(x, offscreen_time, width, color="blue", linewidth=1.0) #offscreen
-        a.set_ylabel('Time per Slide Rot:gesamt, blau:offscreen')
-        a.set_xlabel('Slide')
-
-        print('offscreen time: ', offscreen_time)
-
-        return f
