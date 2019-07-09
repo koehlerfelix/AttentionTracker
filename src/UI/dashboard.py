@@ -3,6 +3,7 @@ from tkinter import *
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib
+import src.chart.relevance as rvc
 matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
@@ -28,27 +29,37 @@ class Dashboard(tk.Toplevel):
         self.state('zoomed')
         self.geometry("%dx%d+0+0" % (window_x - 100, window_y - 100))
 
-        self.configure(background='#111111')
+        self.configure(bg='#111111')
 
-        # create frame
-        frame = Frame(self, borderwidth=1, background='#1E1E1E')
-        frame.pack(fill=BOTH, expand=True)
+        # create grid frames
+        top_frame = Frame(self, bg='#1E1E1E')
+        top_frame.pack(fill=X)
+
+        chart_frame = Frame(self, bg='#878787')
+        chart_frame.pack(fill=BOTH, expand=True)
+
+        button_frame = Frame(self, bg='#636363')
+        button_frame.pack(fill=X, side=BOTTOM)
+
+        # heading and general information
+        heading = Text(top_frame, height=20, width=window_x)
+        heading.insert(END, '\nAttention Summary\n', 'big')
+        heading.pack(side=TOP)
 
         print('pupil list: ', self.__pupil_data_list)
 
         # Button actions
-        self.btn_finish = Button(self, text="finish", width=15, bg='white', command=self.close_window)
+        self.btn_finish = Button(button_frame, text="finish", width=15, bg='white', command=self.close_window)
         self.btn_finish.pack(side="bottom", padx=5, pady=5)
 
-
         time_diagramm = diagramms.get_time_per_page_diagramm(self.__gaze_data_list)
-        canvas = FigureCanvasTkAgg(time_diagramm, self)
+        canvas = FigureCanvasTkAgg(time_diagramm, chart_frame)
         canvas.draw()
         canvas.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         canvas._tkcanvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
         pupil_diagramm = diagramms.get_avg_pupil_size_diagramm(self.__pupil_data_list, self.__avg_pupil_size)
-        canvas = FigureCanvasTkAgg(pupil_diagramm, self)
+        canvas = FigureCanvasTkAgg(pupil_diagramm, chart_frame)
         canvas.draw()
         canvas.get_tk_widget().pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
         canvas._tkcanvas.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
