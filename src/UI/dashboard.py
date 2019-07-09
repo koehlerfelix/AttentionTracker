@@ -32,7 +32,7 @@ class Dashboard(tk.Toplevel):
         self.configure(bg='#111111')
 
         # create grid frames
-        top_frame = Frame(self, bg='#1E1E1E')
+        top_frame = Frame(self, bg='#e8e6e6')
         top_frame.pack(fill=X)
 
         chart_frame = Frame(self, bg='#878787')
@@ -42,9 +42,14 @@ class Dashboard(tk.Toplevel):
         button_frame.pack(fill=X, side=BOTTOM)
 
         # heading and general information
-        heading = Text(top_frame, height=20, width=window_x)
-        heading.insert(END, '\nAttention Summary\n', 'big')
-        heading.pack(side=TOP)
+        top_summary = Text(top_frame, height=20, width=window_x, bg='#e8e6e6', bd=0)
+        top_summary.tag_configure('heading', font=('Verdana', 20, 'bold'))
+        top_summary.tag_configure('alert', foreground='#d90000')
+        top_summary.insert(END, '\nAttention Summary\n', 'heading')
+        top_summary.insert(END, 'Overall time spent: \n')
+        top_summary.insert(END, 'Seems like attention is decreasing: \n')
+        top_summary.config(state=DISABLED)
+        top_summary.pack(side=TOP, padx=20)
 
         print('pupil list: ', self.__pupil_data_list)
 
