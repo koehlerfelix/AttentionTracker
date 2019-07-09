@@ -659,10 +659,12 @@ class GUI:
             current_page_index = len(self.__pdfViewer.get_all_pages()) - 1
         else:
             current_page_index = next_page_index - 1
-        self.reset_and_save_gaze_data(current_page_index)
 
-        # restart thread
-        self.__thread.start()
+        if self.__thread.is_alive():
+            self.reset_and_save_gaze_data(current_page_index)
+
+            # restart thread
+            self.__thread.start()
 
         self.render_page(next_page_index)
 
@@ -676,10 +678,11 @@ class GUI:
         else:
             current_page_index = prev_page_index + 1
 
-        self.reset_and_save_gaze_data(current_page_index)
+        if self.__thread.is_alive():
+            self.reset_and_save_gaze_data(current_page_index)
 
-        # restart thread
-        self.__thread.start()
+            # restart thread
+            self.__thread.start()
 
         self.render_page(prev_page_index)
 
@@ -688,9 +691,10 @@ class GUI:
         btn_start.configure(state="disabled")
 
         # setting up thread
-        if (self.__thread.isAlive()):
+        if self.__thread.isAlive():
             self.__thread.join()
-        self.__thread = threading.Thread(target=self.thread_work)
+        # thread init already done!!
+        # self.__thread = threading.Thread(target=self.thread_work)
 
         # start thread
         if self.__connected:
