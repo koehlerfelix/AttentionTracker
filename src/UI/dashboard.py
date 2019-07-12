@@ -3,7 +3,6 @@ from tkinter import *
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib
-import src.chart.relevance as rvc
 matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure

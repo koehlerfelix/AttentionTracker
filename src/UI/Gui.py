@@ -596,7 +596,7 @@ class GUI:
 
         file_menu = Menu(self.__window)
         menu.add_cascade(label='File', menu=file_menu)
-        file_menu.add_command(label='Import', command=self.import_file)
+        file_menu.add_command(label='Import', command=lambda: self.import_file(btn_stop, btn_scan_pupil))
 
         help_menu = Menu(self.__window)
         menu.add_cascade(label='Help', menu=help_menu)
@@ -617,11 +617,6 @@ class GUI:
         # lbl.plack(expand='True', padx=5, pady=5)
 
         # init eye-tracking buttons
-        btn_start = Button(text="Start", width=15, bg='grey',
-                           command=lambda: self.start_collecting(btn_stop, btn_start))
-        self.__eye_tracker_con_items['btn_start'] = btn_start
-        btn_start.pack(side="left", padx=5, pady=5)
-
         btn_stop = Button(text="Stop", width=15, bg='grey', state="disabled", command=self.stop_collecting)
         self.__eye_tracker_con_items['btn_stop'] = btn_stop
         btn_stop.pack(side="left", padx=5, pady=5)
@@ -697,9 +692,8 @@ class GUI:
 
         self.render_page(prev_page_index)
 
-    def start_collecting(self, btn_stop, btn_start):
+    def start_collecting(self, btn_stop):
         btn_stop.configure(state="normal")
-        btn_start.configure(state="disabled")
 
         # setting up thread
         if self.__thread.isAlive():
@@ -799,7 +793,7 @@ class GUI:
             self.__eye_tracker = eyetracker.EyeTracker(my_eye_tracker)
             self.__connected = True
 
-    def import_file(self):
+    def import_file(self, btn_stop, btn_scan_pupil):
         file = filedialog.askopenfilename(initialdir='/', title='Select pdf file',
                                           filetypes=[('pdf files', '*.pdf')])
         read_pdf_thread = threading.Thread(target=self.read_pdf(file))
@@ -817,6 +811,11 @@ class GUI:
         for x in range(0, len(self.__pdfViewer.get_all_pages())):
             self.__gaze_data_lists.append([])
             self.__pupil_data_lists.append([])
+
+        # start collecting
+        btn_scan_pupil.configure(state="disabled")
+        self.start_collecting(btn_stop)
+
 
     def read_pdf(self, file):
         if bool(self.__page_cache):
