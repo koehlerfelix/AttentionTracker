@@ -614,9 +614,6 @@ class GUI:
                              height=window_y - 200,
                              background='#1E1E1E')
 
-        # lbl = Label(frame, text="Text", font=("Arial Bold", 20), bg='black', fg='white', width=80, height=20)
-        # lbl.plack(expand='True', padx=5, pady=5)
-
         # init eye-tracking buttons
         btn_stop = Button(text="Stop", width=15, bg='grey', state="disabled", command=self.stop_collecting)
         self.__eye_tracker_con_items['btn_stop'] = btn_stop
