@@ -34,6 +34,7 @@ def get_time_per_page_diagramm(gaze_data_list):
 
     return f
 
+
 def get_avg_pupil_size_diagramm(pupil_size_list, avg_pupil_size):
     xlen = len(pupil_size_list)
     x = range(xlen)

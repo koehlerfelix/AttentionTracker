@@ -21,15 +21,15 @@ class GUI:
                     'page_times': dict()}  # for each page (key = page number): start_time and end_time
     __gaze_data_lists = [[[]]]
     __pupil_data_lists = [[]]
-    __pupil_data_lists_alternativ = [3.16,3.17,3.29,3.18]
+    __pupil_data_lists_alternativ = [3.16, 3.17, 3.29, 3.18]
 
     __avg_pupil_size = 3.2  # Random Value
 
     __gaze_data_lists_alternative = __gaze_data_lists_alternative = [[(0.17616580426692963, 0.9616665244102478),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
                                                                       (0.17312994599342346, 0.9625645279884338),
                                                                       (0.17123974859714508, 0.9627096056938171),
                                                                       (0.1604757159948349, 0.97650545835495),
@@ -46,10 +46,10 @@ class GUI:
                                                                       (0.12405483424663544, 0.9961434006690979),
                                                                       (0.12331100553274155, 1.0044410228729248),
                                                                       (0.12533849477767944, 1.003523588180542),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
                                                                       (0.12468674778938293, 1.0127381086349487),
                                                                       (0.12484980374574661, 1.0171887874603271),
                                                                       (0.5502414703369141, 0.4639076590538025),
@@ -140,27 +140,27 @@ class GUI:
                                                                       (0.04516343027353287, 0.10207846015691757),
                                                                       (0.04703674465417862, 0.10278996080160141),
                                                                       (0.04545431211590767, 0.10743097960948944),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
                                                                       (0.04663653299212456, 0.10853110253810883),
                                                                       (0.045757971704006195, 0.10918115079402924),
                                                                       (0.045676685869693756, 0.11611804366111755),
@@ -183,7 +183,7 @@ class GUI:
                                                                       (0.037438467144966125, 0.08200192451477051),
                                                                       (0.03435384854674339, 0.08882889896631241),
                                                                       (0.027651585638523102, 0.09168721735477448),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
                                                                       (0.030808841809630394, 0.08039911836385727),
                                                                       (0.031435031443834305, 0.07974027842283249),
                                                                       (0.04103022441267967, 0.07346440106630325),
@@ -258,17 +258,17 @@ class GUI:
                                                                       (0.5502414703369141, 0.4639076590538025),
                                                                       (0.577083945274353, 0.4470086097717285),
                                                                       (0.6087575554847717, 0.42630094289779663),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
                                                                       (0.6135833263397217, 0.4270203709602356),
                                                                       (0.6110949516296387, 0.43400734663009644),
                                                                       (0.6122182607650757, 0.44878721237182617),
@@ -426,62 +426,62 @@ class GUI:
                                                                       (0.04148462042212486, 0.1061309203505516),
                                                                       (0.04263266921043396, 0.09744798392057419),
                                                                       (0.040975674986839294, 0.09099533408880234),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
                                                                       (0.040135301649570465, 0.08113827556371689),
                                                                       (0.0387364961206913, 0.07516507059335709),
                                                                       (0.037438467144966125, 0.08200192451477051),
@@ -514,12 +514,13 @@ class GUI:
                                                                       (0.04148462042212486, 0.1061309203505516),
                                                                       (0.04263266921043396, 0.09744798392057419),
                                                                       (0.040975674986839294, 0.09099533408880234),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),(0.04500430449843407, 0.097495436668396),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (0.04500430449843407, 0.097495436668396),
                                                                       (0.045184116810560226, 0.09165500849485397),
                                                                       (0.0447755865752697, 0.09398695826530457),
                                                                       (0.04850691929459572, 0.09623198211193085),
@@ -547,12 +548,12 @@ class GUI:
                                                                       (0.04148462042212486, 0.1061309203505516),
                                                                       (0.04263266921043396, 0.09744798392057419),
                                                                       (0.040975674986839294, 0.09099533408880234),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan),
-                                                                      (math.nan,math.nan),(math.nan,math.nan)]]
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan),
+                                                                      (math.nan, math.nan), (math.nan, math.nan)]]
 
     def __init__(self):
         trackers = tr.find_all_eyetrackers()
@@ -596,7 +597,7 @@ class GUI:
 
         file_menu = Menu(self.__window)
         menu.add_cascade(label='File', menu=file_menu)
-        file_menu.add_command(label='Import', command=self.import_file)
+        file_menu.add_command(label='Import', command=lambda: self.import_file(btn_stop, btn_scan_pupil))
 
         help_menu = Menu(self.__window)
         menu.add_cascade(label='Help', menu=help_menu)
@@ -613,15 +614,7 @@ class GUI:
                              height=window_y - 200,
                              background='#1E1E1E')
 
-        # lbl = Label(frame, text="Text", font=("Arial Bold", 20), bg='black', fg='white', width=80, height=20)
-        # lbl.plack(expand='True', padx=5, pady=5)
-
         # init eye-tracking buttons
-        btn_start = Button(text="Start", width=15, bg='grey',
-                           command=lambda: self.start_collecting(btn_stop, btn_start))
-        self.__eye_tracker_con_items['btn_start'] = btn_start
-        btn_start.pack(side="left", padx=5, pady=5)
-
         btn_stop = Button(text="Stop", width=15, bg='grey', state="disabled", command=self.stop_collecting)
         self.__eye_tracker_con_items['btn_stop'] = btn_stop
         btn_stop.pack(side="left", padx=5, pady=5)
@@ -668,11 +661,8 @@ class GUI:
         else:
             current_page_index = next_page_index - 1
 
-        if self.__thread.is_alive():
-            self.reset_and_save_gaze_data(current_page_index)
-
-            # restart thread
-            self.__thread.start()
+        self.reset_and_save_gaze_data(current_page_index)
+        self.__thread.start()
 
         self.render_page(next_page_index)
 
@@ -689,23 +679,17 @@ class GUI:
         else:
             current_page_index = prev_page_index + 1
 
-        if self.__thread.is_alive():
-            self.reset_and_save_gaze_data(current_page_index)
-
-            # restart thread
-            self.__thread.start()
+        self.reset_and_save_gaze_data(current_page_index)
+        # restart thread
+        self.__thread.start()
 
         self.render_page(prev_page_index)
 
-    def start_collecting(self, btn_stop, btn_start):
+    def start_collecting(self, btn_stop):
         btn_stop.configure(state="normal")
-        btn_start.configure(state="disabled")
 
         # setting up thread
-        if self.__thread.isAlive():
-            self.__thread.join()
-        # thread init already done!!
-        # self.__thread = threading.Thread(target=self.thread_work)
+        self.__thread = threading.Thread(target=self.thread_work)
 
         # start thread
         if self.__connected:
@@ -799,7 +783,7 @@ class GUI:
             self.__eye_tracker = eyetracker.EyeTracker(my_eye_tracker)
             self.__connected = True
 
-    def import_file(self):
+    def import_file(self, btn_stop, btn_scan_pupil):
         file = filedialog.askopenfilename(initialdir='/', title='Select pdf file',
                                           filetypes=[('pdf files', '*.pdf')])
         read_pdf_thread = threading.Thread(target=self.read_pdf(file))
@@ -817,6 +801,10 @@ class GUI:
         for x in range(0, len(self.__pdfViewer.get_all_pages())):
             self.__gaze_data_lists.append([])
             self.__pupil_data_lists.append([])
+
+        # start collecting
+        btn_scan_pupil.configure(state="disabled")
+        self.start_collecting(btn_stop)
 
     def read_pdf(self, file):
         if bool(self.__page_cache):
