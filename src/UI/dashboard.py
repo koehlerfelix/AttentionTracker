@@ -1,14 +1,10 @@
 import tkinter as tk
 from tkinter import *
-import matplotlib.pyplot as plt
-import numpy as np
 import matplotlib
+import numpy as np
 matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from matplotlib.figure import Figure
-import math
 import src.UI.diagramms as diagramms
-import datetime
 
 
 class Dashboard(tk.Toplevel):
@@ -75,12 +71,11 @@ class Dashboard(tk.Toplevel):
         canvas.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         canvas._tkcanvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
-        pupil_diagramm = diagramms.get_avg_pupil_size_diagram(self.__pupil_data_list, self.__avg_pupil_size)
+        pupil_diagramm = diagramms.get_avg_pupil_size_diagram2(self.__pupil_data_list, self.__avg_pupil_size)
         canvas = FigureCanvasTkAgg(pupil_diagramm, chart_frame)
         canvas.draw()
         canvas.get_tk_widget().pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
         canvas._tkcanvas.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
-
 
     def close_window(self):
         self.destroy()
@@ -92,6 +87,7 @@ class Dashboard(tk.Toplevel):
         print(self.__gaze_data_list[0])
 
         for i in range(len(self.__gaze_data_list[0])):
-            self.__canvas.create_text(self.__gaze_data_list[0][i][0] * window_x, self.__gaze_data_list[0][i][1] * window_y,
+            self.__canvas.create_text(self.__gaze_data_list[0][i][0] * window_x,
+                                      self.__gaze_data_list[0][i][1] * window_y,
                                       text="x")
         print("finished printing")

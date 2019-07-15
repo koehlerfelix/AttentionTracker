@@ -24,8 +24,8 @@ def get_time_per_page_diagram(gaze_data_list):
 
     f = Figure(figsize=(4, 4), dpi=100)
     a = f.add_subplot(111)
-    a.bar(x, y, width, color="red", linewidth=1.0, label="offscreen")  # gesamtzeit
-    a.bar(x, offscreen_time, width, color="blue", linewidth=1.0, label="onscreen")  # offscreen
+    a.bar(x, y, width, color="blue", linewidth=1.0, label="offscreen")  # gesamtzeit
+    a.bar(x, offscreen_time, width, color="green", linewidth=1.0, label="onscreen")  # offscreen
     a.legend(loc='upper right')
     a.set_ylabel('Time per Slide')
     a.set_xlabel('Slide')
@@ -65,3 +65,19 @@ def get_statistics(gaze_data):
     print('timings: ', statistic)
 
     return statistic
+
+
+def get_avg_pupil_size_diagram2(pupil_size_list, avg_pupil_size):
+    xlen = len(pupil_size_list)
+    x = range(xlen)
+    y = []
+    for i in range(0, len(pupil_size_list)):
+        y.append(((pupil_size_list[i] / avg_pupil_size) - 1) * 100)
+    width = 0.35
+    f = Figure(figsize=(4, 4), dpi=100)
+    a = f.add_subplot(111)
+    a.plot(x, y, width, color="blue", linewidth=1.0)
+    a.set_ylabel('deviation of average pupil size in %')
+    a.set_xlabel('Slide')
+
+    return f
