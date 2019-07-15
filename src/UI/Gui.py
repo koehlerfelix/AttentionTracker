@@ -15,10 +15,6 @@ from PIL import ImageTk
 class GUI:
     __pdfViewer = pdfV.PdfViewer()
     __page_cache = dict()  # provide 'fast render' in case page has been rendered before
-    # statistical information
-    __statistics = {'start_time': 0,  # when eye tracking began
-                    'end_time': 0,  # when eye tracking ended
-                    'page_times': dict()}  # for each page (key = page number): start_time and end_time
     __gaze_data_lists = [[[]]]
     __pupil_data_lists = [[]]
     __pupil_data_lists_alternativ = [3.16,3.17,3.29,3.18]
@@ -659,9 +655,6 @@ class GUI:
     def next_page(self):
         next_page_index = self.__pdfViewer.get_next_page_index()
 
-        # save statistics for current page, init next page
-        self.set_page_timings(next_page_index - 1, next_page_index)
-
         # reset thread and save gaze data from page
         if next_page_index == 0:
             current_page_index = len(self.__pdfViewer.get_all_pages()) - 1
@@ -679,9 +672,6 @@ class GUI:
     # view previous page
     def prev_page(self):
         prev_page_index = self.__pdfViewer.get_previous_page_index()
-
-        # save statistics for current page, init next page
-        self.set_page_timings(prev_page_index + 1, prev_page_index)
 
         # reset thread and save gaze data from page
         if prev_page_index == (len(self.__pdfViewer.get_all_pages()) - 1):
@@ -711,11 +701,6 @@ class GUI:
         if self.__connected:
             self.__thread.start()
 
-        # save time when tracking starts
-        now = datetime.datetime.now()
-        self.__statistics['start_time'] = now
-        self.__statistics['page_times'][self.__pdfViewer.get_next_page_index() - 1] = now
-
     def stop_collecting(self):
         next_page_index = self.__pdfViewer.get_next_page_index()
 
@@ -730,24 +715,17 @@ class GUI:
             self.reset_and_save_gaze_data(current_page_index)
             self.flatten_gaze_list()
 
-        # save time when tracking stops
-        self.__statistics['end_time'] = datetime.datetime.now()
-        self.set_page_timings(next_page_index - 1)
-
-        print('statistics: ', self.__statistics)
-
         # checking gaze data and open new window
         if self.__gaze_data_lists[0] != [[]]:
             self.__window.withdraw()
             self.newWindow = dash.Dashboard(self.__gaze_data_lists, self.__avg_pupil_size,
-                                            self.compute_avg_pupil_list(self.__pupil_data_lists),
-                                            self.__statistics)
+                                            self.compute_avg_pupil_list(self.__pupil_data_lists))
         else:
             print("No gazedata but u get some")
             self.__window.withdraw()
 
             self.newWindow = dash.Dashboard(self.__gaze_data_lists_alternative, self.__avg_pupil_size,
-                                            self.__pupil_data_lists_alternativ, self.__statistics)
+                                            self.__pupil_data_lists_alternativ)
 
     def reset_and_save_gaze_data(self, page_index):
         self.__thread.join(1)
@@ -880,16 +858,3 @@ class GUI:
         for x in range(len(self.__gaze_data_lists)):
             flattened_list = list(itertools.chain.from_iterable(self.__gaze_data_lists[x]))
             self.__gaze_data_lists[x] = flattened_list
-
-    def set_page_timings(self, current_page, next_page=-1):
-        print('setting timings: ', current_page, ' next: ', next_page)
-        now = datetime.datetime.now()
-        self.__statistics['page_times'][current_page] = now - self.__statistics['page_times'][
-            current_page]
-
-        if next_page > -1:
-            if next_page in self.__statistics['page_times']:  # page has been visited before. accumulate view time
-                self.__statistics['page_times'][next_page] = now - self.__statistics['page_times'][next_page]
-
-            else:
-                self.__statistics['page_times'][next_page] = now
