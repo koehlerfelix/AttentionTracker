@@ -661,11 +661,8 @@ class GUI:
         else:
             current_page_index = next_page_index - 1
 
-        if self.__thread.is_alive():
-            self.reset_and_save_gaze_data(current_page_index)
-
-            # restart thread
-            self.__thread.start()
+        self.reset_and_save_gaze_data(current_page_index)
+        self.__thread.start()
 
         self.render_page(next_page_index)
 
@@ -682,11 +679,9 @@ class GUI:
         else:
             current_page_index = prev_page_index + 1
 
-        if self.__thread.is_alive():
-            self.reset_and_save_gaze_data(current_page_index)
-
-            # restart thread
-            self.__thread.start()
+        self.reset_and_save_gaze_data(current_page_index)
+        # restart thread
+        self.__thread.start()
 
         self.render_page(prev_page_index)
 
@@ -694,10 +689,7 @@ class GUI:
         btn_stop.configure(state="normal")
 
         # setting up thread
-        if self.__thread.isAlive():
-            self.__thread.join()
-        # thread init already done!!
-        # self.__thread = threading.Thread(target=self.thread_work)
+        self.__thread = threading.Thread(target=self.thread_work)
 
         # start thread
         if self.__connected:
