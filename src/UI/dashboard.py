@@ -64,7 +64,7 @@ class Dashboard(tk.Toplevel):
         canvas.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         canvas._tkcanvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
-        pupil_diagramm = diagramms.get_avg_pupil_size_diagramm(self.__pupil_data_list, self.__avg_pupil_size)
+        pupil_diagramm = diagramms.get_avg_pupil_size_diagramm2(self.__pupil_data_list, self.__avg_pupil_size)
         canvas = FigureCanvasTkAgg(pupil_diagramm, chart_frame)
         canvas.draw()
         canvas.get_tk_widget().pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
