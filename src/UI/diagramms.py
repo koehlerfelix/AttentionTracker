@@ -1,6 +1,7 @@
 import math
 from matplotlib.figure import Figure
 
+
 def get_time_per_page_diagramm(gaze_data_list):
     xlen = len(gaze_data_list)
     x = range(xlen)

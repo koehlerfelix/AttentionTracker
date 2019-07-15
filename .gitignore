@@ -5,6 +5,7 @@ __pycache__/
 
 # user specific files
 src/static/img/*
+src/temp-plot.html
 
 # C extensions
 *.so
