@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0d25e948-b6ce-41ff-9a17-654fa3033b83" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/dashboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/dashboard.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/diagramms.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/diagramms.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,8 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI/Gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11883">
-              <caret line="709" column="12" selection-start-line="709" selection-start-column="12" selection-end-line="709" selection-end-column="12" />
+            <state relative-caret-position="17">
+              <caret line="782" column="12" selection-start-line="782" selection-start-column="12" selection-end-line="782" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -48,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI/dashboard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="69" selection-start-line="69" selection-end-line="69" />
+            <state relative-caret-position="192">
+              <caret line="71" column="63" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -57,8 +58,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/UI/diagramms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+            <state relative-caret-position="268">
+              <caret line="27" column="48" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,6 +92,7 @@
       <find>#</find>
       <find>fla</find>
       <find>pupil</find>
+      <find>get_avg</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -107,16 +112,16 @@
         <option value="$PROJECT_DIR$/src/util/pdfConverter.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/eyetracker/eyetracker.py" />
-        <option value="$PROJECT_DIR$/src/UI/dashboard.py" />
         <option value="$PROJECT_DIR$/src/UI/Gui.py" />
+        <option value="$PROJECT_DIR$/src/UI/dashboard.py" />
         <option value="$PROJECT_DIR$/src/UI/diagramms.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="1197" />
-    <option name="height" value="868" />
+    <option name="x" value="570" />
+    <option name="width" value="814" />
+    <option name="height" value="518" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -126,6 +131,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -142,25 +148,12 @@
               <item name="AttentionTracker" type="b2602c69:ProjectViewProjectNode" />
               <item name="AttentionTracker" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AttentionTracker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AttentionTracker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="UI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AttentionTracker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AttentionTracker" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -251,7 +244,9 @@
       <workItem from="1561991043524" duration="1768000" />
       <workItem from="1562143386603" duration="6968000" />
       <workItem from="1562226441731" duration="2127000" />
-      <workItem from="1562230252781" duration="836000" />
+      <workItem from="1562230252781" duration="2938000" />
+      <workItem from="1562663066494" duration="1163000" />
+      <workItem from="1563199849898" duration="2919000" />
     </task>
     <task id="LOCAL-00001" summary="Open new window and close current window">
       <created>1560616418767</created>
@@ -383,7 +378,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44942000" />
+    <option name="totallyTimeSpent" value="51126000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -398,12 +393,12 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.121465296" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25642672" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49867898" visible="true" weight="0.36944443" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49867898" visible="true" weight="0.3013889" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39305556" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -417,7 +412,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.33804628" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.047557842" />
       <window_info anchor="right" id="Database" order="4" weight="0.32969153" />
     </layout>
   </component>
@@ -446,7 +441,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="add legend to the time diagramm" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/AttentionTracker$main.coverage" NAME="main Coverage Results" MODIFIED="1562231056015" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/AttentionTracker$main.coverage" NAME="main Coverage Results" MODIFIED="1563203135134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/AttentionTracker$dashboard.coverage" NAME="dashboard Coverage Results" MODIFIED="1562226669963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/UI" />
     <SUITE FILE_PATH="coverage/AttentionTracker$start.coverage" NAME="main Coverage Results" MODIFIED="1559663642604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -567,22 +562,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/Gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11883">
-          <caret line="709" column="12" selection-start-line="709" selection-start-column="12" selection-end-line="709" selection-end-column="12" />
+        <state relative-caret-position="17">
+          <caret line="782" column="12" selection-start-line="782" selection-start-column="12" selection-end-line="782" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/dashboard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        <state relative-caret-position="192">
+          <caret line="71" column="63" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="63" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/diagramms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+        <state relative-caret-position="268">
+          <caret line="27" column="48" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
