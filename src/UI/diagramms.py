@@ -2,7 +2,7 @@ import math
 from matplotlib.figure import Figure
 
 
-def get_time_per_page_diagramm(gaze_data_list):
+def get_time_per_page_diagram(gaze_data_list):
     xlen = len(gaze_data_list)
     x = range(xlen)
     y = []
@@ -35,7 +35,7 @@ def get_time_per_page_diagramm(gaze_data_list):
     return f
 
 
-def get_avg_pupil_size_diagramm(pupil_size_list, avg_pupil_size):
+def get_avg_pupil_size_diagram(pupil_size_list, avg_pupil_size):
     xlen = len(pupil_size_list)
     x = range(xlen)
     y = []
@@ -51,7 +51,23 @@ def get_avg_pupil_size_diagramm(pupil_size_list, avg_pupil_size):
     return f
 
 
-def get_avg_pupil_size_diagramm2(pupil_size_list, avg_pupil_size):
+def get_statistics(gaze_data):
+    num_of_pages = len(gaze_data)
+
+    # statistical information
+    statistic = {'view_time': 0,  # overall view time of pdf
+                 'page_times': []}  # for each page (key = page number): start_time and end_time
+
+    for page in range(num_of_pages):
+        page_time = len(gaze_data[page]) / 90
+        statistic['page_times'].append(page_time)
+        statistic['view_time'] = statistic['view_time'] + page_time
+    print('timings: ', statistic)
+
+    return statistic
+
+
+def get_avg_pupil_size_diagram2(pupil_size_list, avg_pupil_size):
     xlen = len(pupil_size_list)
     x = range(xlen)
     y = []
