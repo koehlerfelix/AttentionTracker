@@ -38,6 +38,7 @@ class Dashboard(tk.Toplevel):
         button_frame.pack(fill=X, side=BOTTOM)
 
         # heading and general information
+        diagramms.get_attention_gradient(self.__pupil_data_list)
         statistic = diagramms.get_statistics(self.__gaze_data_list)
         min_idx = np.argmin(statistic['page_times'])
         max_idx = np.argmax(statistic['page_times'])
