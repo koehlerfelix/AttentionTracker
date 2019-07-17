@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import *
 import matplotlib
 import numpy as np
+import datetime
 matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import src.UI.diagramms as diagramms
@@ -38,7 +39,7 @@ class Dashboard(tk.Toplevel):
         button_frame.pack(fill=X, side=BOTTOM)
 
         # heading and general information
-        diagramms.get_attention_gradient(self.__pupil_data_list)
+        # diagramms.get_attention_gradient(self.__pupil_data_list)
         statistic = diagramms.get_statistics(self.__gaze_data_list)
         min_idx = np.argmin(statistic['page_times'])
         max_idx = np.argmax(statistic['page_times'])
@@ -48,13 +49,17 @@ class Dashboard(tk.Toplevel):
         top_summary.tag_configure('heading', font=('Verdana', 20, 'bold'))
         top_summary.tag_configure('alert', foreground='#d90000')
         top_summary.insert(END, '\nAttention Summary\n', 'heading')
-        top_summary.insert(END, 'Overall time spent: ' + str(statistic['view_time']) + '\n')
+        top_summary.insert(END, 'Overall time spent: ' + str(self.cut_microsecs(statistic['view_time'])) + '\n')
         # top_summary.insert(END, 'Seems like attention is decreasing: \n')
         # top_summary.insert(END, 'Shortest view time: ' + str(min(statistic['page_times'])) + ' seconds on page X\n')
         # top_summary.insert(END, 'Longest view time: ' + str(max(statistic['page_times'])) + ' seconds on page X\n')
-        top_summary.insert(END, 'Shortest view time: ' + str(statistic['page_times'][min_idx]) + ' seconds on page '
+        top_summary.insert(END, 'Shortest view time: '
+                           + str(self.cut_microsecs(statistic['page_times'][min_idx]))
+                           + ' on page '
                            + str(min_idx) + '\n')
-        top_summary.insert(END, 'Longest view time: ' + str(statistic['page_times'][max_idx]) + ' seconds on page '
+        top_summary.insert(END, 'Longest view time: '
+                           + str(self.cut_microsecs(statistic['page_times'][max_idx]))
+                           + ' on page '
                            + str(max_idx) + '\n')
         # top_summary.insert(END, 'Average view time: ' + str(max(statistic['page_times'])) + ' seconds on page X\n')
         top_summary.config(state=DISABLED)
@@ -92,3 +97,11 @@ class Dashboard(tk.Toplevel):
                                       self.__gaze_data_list[0][i][1] * window_y,
                                       text="x")
         print("finished printing")
+
+    def cut_microsecs(self, seconds):
+        td_microsecs = datetime.timedelta(seconds=seconds)
+        td_microsecs = td_microsecs.microseconds
+        if td_microsecs > 0.5:
+            return datetime.timedelta(seconds=seconds + 1) - datetime.timedelta(microseconds=td_microsecs)
+        else:
+            return datetime.timedelta(seconds=seconds) - datetime.timedelta(microseconds=td_microsecs)
