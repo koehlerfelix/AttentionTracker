@@ -83,7 +83,10 @@ def get_avg_pupil_size_diagram2(pupil_size_list, avg_pupil_size):
     y = []
     # compute data
     for i in range(0, len(pupil_size_list)):
-        y.append(((pupil_size_list[i] / avg_pupil_size) - 1) * 100)
+        if (pupil_size_list[i] == 'NaN'):
+            y.append(0)
+        else:
+            y.append(((pupil_size_list[i] / avg_pupil_size) - 1) * 100)
     y_baseline = [0] * len(y)
 
     f = Figure(figsize=(4, 4), dpi=100)
